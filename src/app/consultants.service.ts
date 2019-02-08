@@ -28,7 +28,10 @@ export class ConsultantsService {
   }
 
   removeConsultant(consultant) {
-    // TODO
+    this.consultants.forEach( (consultantInList, index) => {
+      if(consultantInList === consultant) this.consultants.splice(index,1);
+    });
+    console.log("Successfully deleted consultant : " + consultant);
   }
 
   list() {
