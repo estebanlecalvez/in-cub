@@ -19,6 +19,7 @@ import { MenuComponent } from './menu/menu.component';
 
 // Form
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StartupListComponent } from './startup-list/startup-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    MenuComponent
+    MenuComponent,
+    StartupListComponent
   ],
   imports: [
     HttpClientModule,

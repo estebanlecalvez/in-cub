@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Secteur d'activité</th>
+    <th>Représentant légal</th>
+    <th>Nombre de co-fondateurs</th>
+    <th>Description détaillé du projet</th>
+    <th>Adresse</th>
+  </tr>
+
+  <tr *ngFor="let startup of startups; " >
+    <td>{{startup.nom}}</td>
+    <td>{{startup.secteur}}</td>
+    <td>{{startup.representant}}</td>
+    <td>{{startup.cofondateur}}</td>
+    <td>{{startup.description}}</td>
+    <td>{{startup.adresse}}</td>
+  </tr>
+</table>
