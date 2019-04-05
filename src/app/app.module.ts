@@ -29,7 +29,7 @@ import { StartupListComponent } from './startup-list/startup-list.component';
     RegisterComponent,
     DashboardComponent,
     MenuComponent,
-    StartupListComponent
+    StartupListComponent,
   ],
   imports: [
     HttpClientModule,
@@ -53,6 +53,10 @@ import { StartupListComponent } from './startup-list/startup-list.component';
       {
         path:'',
         component:HomeComponent
+      },
+      {
+        path:'liste',
+        component:StartupListComponent,
       }
     ]),
     FormsModule,

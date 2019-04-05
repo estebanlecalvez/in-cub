@@ -1,47 +1,48 @@
-<h2>Add new startup</h2>
-
 <form [formGroup]="startupForm">
- <div>
-   <!-- Requis 20 max -->
-    <label>Nom</label>
-    <input formControlName="nom">
- </div>
+   <div class="container">
+      <h2>Add new startup</h2>
 
- <div>
-   <!-- 10 max -->
-   <label>Secteur d'activité</label>
-   <input formControlName="secteur">
- </div>
+      <div>
+         <!-- Requis 20 max -->
+         <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
+      </div>
 
- <div>
-   <!-- requis 15 max -->
-    <label>Représentant légal</label>
-    <input formControlName="representant">
-  </div>
+      <div>
+         <!-- 10 max -->
+         <input type="text" autocomplete="off" id="secteur" formControlName="secteur" placeholder="Secteur d'activité">
+      </div>
 
-  <div>
-    <!-- requis nombre obligatoire -->
-   <label>Nombre de co-fondateurs</label>
-   <input formControlName="cofondateur">
- </div>
+      <div>
+         <!-- requis 15 max -->
+         <input type="text" autocomplete="off" id="representant" formControlName="representant"
+            placeholder="Représentant légal">
+      </div>
 
- <div>
-   <!-- Description détallé du projet (requis,textarea max 250) -->
-   <label>Description détaillé du projet</label>
-   <input formControlName="description">
- </div>
+      <div>
+         <!-- requis nombre obligatoire -->
+         <input type="text" autocomplete="off" id="nbrFondateur" formControlName="cofondateur"
+            placeholder="Nombre de co-fondateurs">
+      </div>
 
- <div>
-  <!-- adresse non obligatoire (champ texte de 25 max). -->
-   <label>Adresse</label>
-   <input formControlName="adresse">
- </div>
+      <div>
+         <!-- Description détallé du projet (requis,textarea max 250) -->
+         <input type="text" autocomplete="off" id="description" formControlName="description"
+            placeholder="Description détaillé du projet">
+      </div>
 
- <button (click)="register()">Register</button>
+      <div>
+         <!-- adresse non obligatoire (champ texte de 25 max). -->
+         <input type="text" autocomplete="off" id="adresse" formControlName="adresse" placeholder="Adresse">
+      </div>
+
+      <div>
+         <button (click)="register()">Register</button>
+      </div>
+   </div>
 </form>
 
 <style>
-   form{
+   form {
       float: left;
    }
 
@@ -53,8 +54,8 @@
       border: 3px blue solid;
    }
 
-   div .errors{
-      font-weight:bold;
+   div .errors {
+      font-weight: bold;
       color: red;
    }
 </style>
