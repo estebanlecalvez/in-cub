@@ -6,6 +6,7 @@
     <th>Nombre de co-fondateurs</th>
     <th>Description détaillé du projet</th>
     <th>Adresse</th>
+    <th>Delete</th>
   </tr>
 
   <tr *ngFor="let startup of startups; " >
@@ -15,5 +16,8 @@
     <td>{{startup.cofondateur}}</td>
     <td>{{startup.description}}</td>
     <td>{{startup.adresse}}</td>
+    <td>
+      <button (click)="delete(startup)">Delete</button>
+    </td>
   </tr>
 </table>

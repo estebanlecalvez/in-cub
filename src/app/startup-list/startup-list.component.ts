@@ -17,4 +17,8 @@ export class StartupListComponent implements OnInit {
   ngOnInit() {
     this.startups = this.startupService.list();
   }
+
+  delete(startupToDelete){
+    this.startupService.delete(startupToDelete);
+  }
 }
