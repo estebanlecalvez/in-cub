@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
+import { ConsultantsService } from './consultants.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StartupsServiceService {
 
+  consultants = new ConsultantsService();
   startups = [{
     id:1,
-    nom: 'nom',
-    secteur: 'secteur',
-    representant: 'representant',
-    cofondateur: 'cofondateur',
-    description: 'description',
-    adresse: 'ceestune@adresse.test'
+    nom: 'Default',
+    secteur: 'Rennes',
+    representant: this.consultants.findOne(1).nomConsultant,
+    cofondateur: this.consultants.findOne(2).nomConsultant,
+    description: 'Startup Default',
+    adresse: 'default@startup.net'
   }];
 
   constructor() { }
@@ -49,6 +51,7 @@ export class StartupsServiceService {
         startup = startupFind;
       } 
     });
+    console.log(startup);
     return startup;
   }
 

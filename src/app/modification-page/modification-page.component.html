@@ -5,41 +5,41 @@
      <div>
         <!-- Requis 20 max -->
         <input type="text" autocomplete="off" id="nom" formControlName="nom" 
-        placeholder="Nom">
+        placeholder="{{startupFind.nom}}"/>
      </div>
 
      <div>
         <!-- 10 max -->
         <input type="text" autocomplete="off" id="secteur" formControlName="secteur" 
-        placeholder="Secteur">
+        placeholder="{{startupFind.secteur}}"/>
      </div>
 
      <div>
         <!-- requis 15 max -->
         <input type="text" autocomplete="off" id="representant" formControlName="representant"
-           placeholder="Representant">
+           placeholder="{{startupFind.representant}}"/>
      </div>
 
      <div>
         <!-- requis nombre obligatoire -->
         <input type="text" autocomplete="off" id="nbrFondateur" formControlName="cofondateur"
-           placeholder="Cofondateur" ng-model="this.startupFind.cofondateur">
+           placeholder="{{startupFind.cofondateur}}" ng-model="this.startupFind.cofondateur"/>
      </div>
 
      <div>
         <!-- Description détallé du projet (requis,textarea max 250) -->
         <input type="text" autocomplete="off" id="description" formControlName="description"
-           placeholder="Description">
+           placeholder="{{startupFind.description}}"/>
      </div>
 
      <div>
         <!-- adresse non obligatoire (champ texte de 25 max). -->
         <input type="text" autocomplete="off" id="adresse" formControlName="adresse" 
-        placeholder="Adresse">
+        placeholder="{{startupFind.adresse}}"/>
      </div>
 
      <div>
-        <button (click)="update(this.startupFind)">Update</button>
+        <button (click)="update(this.startupFind)" class="btn btn-success">Update</button>
      </div>
   </div>
 </form>

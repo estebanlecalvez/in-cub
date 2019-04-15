@@ -17,13 +17,13 @@ form {
     justify-content: center;
     align-items: center;
     padding: 30px;
-    background: #25007a;
+    /* background: #25007a; */
     border-radius: 20px;
 }
 
 .container:hover{
-    background: #2b0091;
-    color:white;
+    /* background: #2b0091; */
+    color:black;
 }
 
 input{
@@ -32,16 +32,6 @@ input{
     padding:5px 10px;
     margin:5px;
     min-width: 300px;
-}
-
-button{
-    margin:10px;
-    padding:10px;
-    padding-left:20px;
-    padding-right:20px;
-    border-radius:10px;
-    font-size:20px;
-    cursor:pointer;
 }
 
 

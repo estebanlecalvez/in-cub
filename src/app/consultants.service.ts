@@ -6,15 +6,15 @@ import { Injectable } from '@angular/core';
 export class ConsultantsService {
   consultants = [
     {
-      id: 11,
+      id: 1,
       nomConsultant: "Jean-Yves Durand",
     },    
     {
-      id: 12,
+      id: 2,
       nomConsultant: "Pierre La Fondue",
     },
     {
-      id: 13,
+      id: 3,
       nomConsultant: "Monique Ranou",
     },
    
@@ -34,6 +34,16 @@ export class ConsultantsService {
     console.log("Successfully deleted consultant : " + consultant);
   }
 
+  findOne(id) {
+    let consultant;
+    this.consultants.forEach(consultantFind => {
+      if (consultantFind.id == id){
+        consultant = consultantFind;
+      } 
+    });
+    console.log(consultant);
+    return consultant;
+  }
   list() {
     return this.consultants;
   }

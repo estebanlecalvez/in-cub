@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 
 // Service
 import { StartupsServiceService } from '../startups-service.service'
-import { StartupListComponent } from '../startup-list/startup-list.component';
 
 // Get param in url
 import { ActivatedRoute } from "@angular/router";
@@ -30,7 +29,6 @@ export class ModificationPageComponent implements OnInit {
   
   ngOnInit() {
     // Get id param
-
     this.route.paramMap.subscribe(params => {
       this.find(params.get("id"));
     })
@@ -93,7 +91,7 @@ export class ModificationPageComponent implements OnInit {
     console.log(nomUpdate);
 
     // TODO - Renvoyer vers le service avec les
-    // valeurs si dessus
+    // valeurs ci dessus
   }
 }
 
