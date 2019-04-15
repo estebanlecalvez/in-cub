@@ -1,0 +1,59 @@
+form {
+    float: left;
+    display:flex;
+    position:initial;
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.container{
+    display: flex;
+    color:rgb(211, 211, 211);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: #25007a;
+    border-radius: 20px;
+}
+
+.container:hover{
+    background: #2b0091;
+    color:white;
+}
+
+input{
+    outline:0;
+    font-size:20px;
+    padding:5px 10px;
+    margin:5px;
+    min-width: 300px;
+}
+
+button{
+    margin:10px;
+    padding:10px;
+    padding-left:20px;
+    padding-right:20px;
+    border-radius:10px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+
+input.ng-invalid {
+    border: 3px blue solid;
+ }
+
+ input.ng-invalid.ng-dirty {
+    border: 3px blue solid;
+ }
+
+ div .errors {
+    font-weight: bold;
+    color: red;
+ }
