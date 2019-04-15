@@ -6,6 +6,7 @@
     <th>Nombre de co-fondateurs</th>
     <th>Description détaillé du projet</th>
     <th>Adresse</th>
+    <th>Modification</th>
     <th>Delete</th>
   </tr>
 
@@ -16,6 +17,10 @@
     <td>{{startup.cofondateur}}</td>
     <td>{{startup.description}}</td>
     <td>{{startup.adresse}}</td>
+    <td>
+      <button routerLink="/startup/{{startup.id}}">Modification</button>
+
+    </td>
     <td>
       <button (click)="delete(startup)">Delete</button>
     </td>

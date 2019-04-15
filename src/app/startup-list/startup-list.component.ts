@@ -21,4 +21,8 @@ export class StartupListComponent implements OnInit {
   delete(startupToDelete){
     this.startupService.delete(startupToDelete);
   }
+
+  update(startupToUpdate){
+    this.startupService.update(startupToUpdate);
+  }
 }

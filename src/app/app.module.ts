@@ -20,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
 // Form
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StartupListComponent } from './startup-list/startup-list.component';
+import { ModificationPageComponent } from './modification-page/modification-page.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { StartupListComponent } from './startup-list/startup-list.component';
     DashboardComponent,
     MenuComponent,
     StartupListComponent,
+    ModificationPageComponent,
   ],
   imports: [
     HttpClientModule,
@@ -57,7 +59,11 @@ import { StartupListComponent } from './startup-list/startup-list.component';
       {
         path:'liste',
         component:StartupListComponent,
-      }
+      },
+      {
+        path:'startup/:id',
+        component:ModificationPageComponent,
+      },
     ]),
     FormsModule,
     ReactiveFormsModule,

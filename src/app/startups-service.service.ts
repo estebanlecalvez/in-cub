@@ -6,12 +6,13 @@ import { Injectable } from '@angular/core';
 export class StartupsServiceService {
 
   startups = [{
-    nom: 'test',
-    secteur: 'test',
-    representant: 'test',
-    cofondateur: 'test',
-    description: 'test',
-    adresse: 'test@test.fr'
+    id:1,
+    nom: 'nom',
+    secteur: 'secteur',
+    representant: 'representant',
+    cofondateur: 'cofondateur',
+    description: 'description',
+    adresse: 'ceestune@adresse.test'
   }];
 
   constructor() { }
@@ -24,22 +25,42 @@ export class StartupsServiceService {
   }
 
   add(newStartup) {
-    console.log('Add startup : ', newStartup)
     this.startups.push(newStartup);
-    console.log('Startup list : ', this.startups)
   }
 
-  // TODO
   delete(startupToDelete) {
-    console.log(startupToDelete)
     this.startups.forEach((item, index) => {
       if (item === startupToDelete) this.startups.splice(index, 1);
     });
-    console.log(this.startups)
   }
 
-  // TODO
-  findOne(startupToFind) {
-    console.log('Find startup : ', startupToFind)
+  update(startupToUpdate){
+    this.startups.forEach((item, index) => {
+      if (item === startupToUpdate){
+        console.log('update : ', startupToUpdate);
+      } 
+    });
+  }
+
+  findOne(id) {
+    let startup;
+    this.startups.forEach(startupFind => {
+      if (startupFind.id == id){
+        startup = startupFind;
+      } 
+    });
+    return startup;
+  }
+
+  showUpdatedItem(newItem){
+    let updateItem = this.startups.find(this.findIndexToUpdate, newItem.id);
+
+    let index = this.startups.indexOf(updateItem);
+
+    this.startups[index] = newItem;
+  }
+
+  findIndexToUpdate(newItem) { 
+    return newItem.id === this;
   }
 }
