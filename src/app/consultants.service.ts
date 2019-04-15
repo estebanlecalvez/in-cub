@@ -17,7 +17,6 @@ export class ConsultantsService {
       id: 3,
       nomConsultant: "Monique Ranou",
     },
-   
   ];
 
   constructor() { }

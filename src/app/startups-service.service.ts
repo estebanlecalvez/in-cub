@@ -8,14 +8,31 @@ export class StartupsServiceService {
 
   consultants = new ConsultantsService();
   startups = [{
-    id:1,
+    id: 1,
     nom: 'Default',
     secteur: 'Rennes',
     representant: this.consultants.findOne(1).nomConsultant,
     cofondateur: this.consultants.findOne(2).nomConsultant,
     description: 'Startup Default',
     adresse: 'default@startup.net'
-  }];
+  }, {
+    id: 2,
+    nom: 'Default',
+    secteur: 'Rennes',
+    representant: this.consultants.findOne(1).nomConsultant,
+    cofondateur: this.consultants.findOne(2).nomConsultant,
+    description: 'Startup Default',
+    adresse: 'default@startup.net'
+  }, {
+    id: 3,
+    nom: 'Default',
+    secteur: 'Rennes',
+    representant: this.consultants.findOne(1).nomConsultant,
+    cofondateur: this.consultants.findOne(2).nomConsultant,
+    description: 'Startup Default',
+    adresse: 'default@startup.net'
+  }
+  ];
 
   constructor() { }
 
@@ -36,26 +53,26 @@ export class StartupsServiceService {
     });
   }
 
-  update(startupToUpdate){
+  update(startupToUpdate) {
     this.startups.forEach((item, index) => {
-      if (item === startupToUpdate){
+      if (item === startupToUpdate) {
         console.log('update : ', startupToUpdate);
-      } 
+      }
     });
   }
 
   findOne(id) {
     let startup;
     this.startups.forEach(startupFind => {
-      if (startupFind.id == id){
+      if (startupFind.id == id) {
         startup = startupFind;
-      } 
+      }
     });
     console.log(startup);
     return startup;
   }
 
-  showUpdatedItem(newItem){
+  showUpdatedItem(newItem) {
     let updateItem = this.startups.find(this.findIndexToUpdate, newItem.id);
 
     let index = this.startups.indexOf(updateItem);
@@ -63,7 +80,7 @@ export class StartupsServiceService {
     this.startups[index] = newItem;
   }
 
-  findIndexToUpdate(newItem) { 
+  findIndexToUpdate(newItem) {
     return newItem.id === this;
   }
 }

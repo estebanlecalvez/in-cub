@@ -1,28 +1,31 @@
-<table id="listStartup">
-  <tr>
-    <th>Nom</th>
-    <th>Secteur d'activité</th>
-    <th>Représentant légal</th>
-    <th>Nombre de co-fondateurs</th>
-    <th>Description détaillé du projet</th>
-    <th>Adresse</th>
-    <th>Modification</th>
-    <th>Delete</th>
-  </tr>
-
-  <tr *ngFor="let startup of startups; " >
-    <td>{{startup.nom}}</td>
-    <td>{{startup.secteur}}</td>
-    <td>{{startup.representant}}</td>
-    <td>{{startup.cofondateur}}</td>
-    <td>{{startup.description}}</td>
-    <td>{{startup.adresse}}</td>
-    <td>
-      <button routerLink="/startup/{{startup.id}}">Modification</button>
-
-    </td>
-    <td>
-      <button (click)="delete(startup)">Delete</button>
-    </td>
-  </tr>
-</table>
+<div class="container">
+  <table class="table" id="listStartup">
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Secteur d'activité</th>
+      <th scope="col">Représentant légal</th>
+      <th scope="col">Nombre de co-fondateurs</th>
+      <th scope="col">Description détaillé du projet</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Modification</th>
+      <th scope="col">Delete</th>
+    </tr>
+  
+    <tr *ngFor="let startup of startups; " >
+      <td>{{startup.nom}}</td>
+      <td>{{startup.secteur}}</td>
+      <td>{{startup.representant}}</td>
+      <td>{{startup.cofondateur}}</td>
+      <td>{{startup.description}}</td>
+      <td>{{startup.adresse}}</td>
+      <td>
+        <button class="btn btn-primary"routerLink="/startup/{{startup.id}}">Modification</button>
+  
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="delete(startup)">Delete</button>
+      </td>
+    </tr>
+  </table>
+  <button class="btn btn-success" routerLink="/startup/add">Add Startup</button>
+</div>

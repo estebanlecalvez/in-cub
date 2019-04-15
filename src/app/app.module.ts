@@ -18,9 +18,10 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 
 // Form
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StartupListComponent } from './startup-list/startup-list.component';
 import { ModificationPageComponent } from './modification-page/modification-page.component';
+import { AddStartupComponent } from './add-startup/add-startup.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ModificationPageComponent } from './modification-page/modification-page
     MenuComponent,
     StartupListComponent,
     ModificationPageComponent,
+    AddStartupComponent,
   ],
   imports: [
     HttpClientModule,
@@ -40,30 +42,34 @@ import { ModificationPageComponent } from './modification-page/modification-page
     ),
     RouterModule.forRoot([
       {
-        path:'login',
-        component:LoginComponent
+        path: 'login',
+        component: LoginComponent
       },
       {
-        path:'register',
-        component:RegisterComponent
+        path: 'register',
+        component: RegisterComponent
       },
       {
-        path:'dashboard',
-        component:DashboardComponent,
+        path: 'dashboard',
+        component: DashboardComponent,
         // canActivate:[AuthGuard]
       },
       {
-        path:'',
-        component:HomeComponent
+        path: '',
+        component: HomeComponent
       },
       {
-        path:'liste',
-        component:StartupListComponent,
+        path: 'liste',
+        component: StartupListComponent,
+      },{
+        path: 'startup/add',
+        component:AddStartupComponent,
       },
       {
-        path:'startup/:id',
-        component:ModificationPageComponent,
+        path: 'startup/:id',
+        component: ModificationPageComponent,
       },
+      
     ]),
     FormsModule,
     ReactiveFormsModule,
