@@ -21,6 +21,11 @@ form {
     border-radius: 20px;
 }
 
+.container:hover{
+    background: #2b0091;
+    color:white;
+}
+
 input{
     min-width: 300px;
     max-width: 300px;
@@ -31,10 +36,13 @@ input{
     margin:10px;
 }
 
-.container:hover{
-    background: #2b0091;
-    color:white;
-}
+input.ng-invalid {
+    border: 3px blue solid;
+ }
+
+ input.ng-invalid.ng-dirty {
+    border: 3px blue solid;
+ }
 
  div .errors {
     font-weight: bold;

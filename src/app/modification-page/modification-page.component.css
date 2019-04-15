@@ -17,31 +17,24 @@ form {
     justify-content: center;
     align-items: center;
     padding: 30px;
-    /* background: #25007a; */
+    background: #25007a;
     border-radius: 20px;
 }
 
-.container:hover{
-    /* background: #2b0091; */
-    color:black;
-}
-
 input{
-    outline:0;
-    font-size:20px;
-    padding:5px 10px;
-    margin:5px;
     min-width: 300px;
+    max-width: 300px;
+    border-radius:0 10px 10px 0;
 }
 
+.input-group-prepend{
+    margin:10px;
+}
 
-input.ng-invalid {
-    border: 3px blue solid;
- }
-
- input.ng-invalid.ng-dirty {
-    border: 3px blue solid;
- }
+.container:hover{
+    background: #2b0091;
+    color:white;
+}
 
  div .errors {
     font-weight: bold;

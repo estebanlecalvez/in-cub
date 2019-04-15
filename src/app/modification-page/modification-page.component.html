@@ -1,45 +1,65 @@
 <form [formGroup]="startupForm">
-  <div class="container">
-     <h2>Update startup</h2>
+   <div class="container">
+      <h2>Update startup</h2>
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/account.svg" alt="Nom">
+         </span>
+         <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="{{startupFind.nom}}">
+      </div>
 
-     <div>
-        <!-- Requis 20 max -->
-        <input type="text" autocomplete="off" id="nom" formControlName="nom" 
-        placeholder="{{startupFind.nom}}"/>
-     </div>
 
-     <div>
-        <!-- 10 max -->
-        <input type="text" autocomplete="off" id="secteur" formControlName="secteur" 
-        placeholder="{{startupFind.secteur}}"/>
-     </div>
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/map.svg" alt="Secteur">
+         </span>
+         <input type="text" autocomplete="off" id="secteur" formControlName="secteur"
+            placeholder="{{startupFind.secteur}}">
+      </div>
 
-     <div>
-        <!-- requis 15 max -->
-        <input type="text" autocomplete="off" id="representant" formControlName="representant"
-           placeholder="{{startupFind.representant}}"/>
-     </div>
 
-     <div>
-        <!-- requis nombre obligatoire -->
-        <input type="text" autocomplete="off" id="nbrFondateur" formControlName="cofondateur"
-           placeholder="{{startupFind.cofondateur}}" ng-model="this.startupFind.cofondateur"/>
-     </div>
+      <!-- requis 15 max -->
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/face.svg" alt="Représentant">
+         </span>
+         <input type="text" autocomplete="off" id="representant" formControlName="{{startupFind.representant}}"
+            placeholder="Représentant Légal">
+      </div>
 
-     <div>
-        <!-- Description détallé du projet (requis,textarea max 250) -->
-        <input type="text" autocomplete="off" id="description" formControlName="description"
-           placeholder="{{startupFind.description}}"/>
-     </div>
 
-     <div>
-        <!-- adresse non obligatoire (champ texte de 25 max). -->
-        <input type="text" autocomplete="off" id="adresse" formControlName="adresse" 
-        placeholder="{{startupFind.adresse}}"/>
-     </div>
 
-     <div>
-        <button (click)="update(this.startupFind)" class="btn btn-success">Update</button>
-     </div>
-  </div>
+      <!-- requis nombre obligatoire -->
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/supervisor.svg" alt="Co-fondateur">
+         </span>
+         <input type="number" autocomplete="off" id="nbrFondateur" formControlName="nbrFondateur"
+            placeholder="{{startupFind.cofondateur}}">
+      </div>
+
+
+      <!-- Description détallé du projet (requis,textarea max 250) -->
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/create.svg" alt="Description">
+         </span>
+         <input type="text" autocomplete="off" id="description" formControlName="description"
+            placeholder="{{startupFind.description}}">
+      </div>
+
+      <!-- adresse non obligatoire (champ texte de 25 max). -->
+
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/place.svg" alt="Adresse">
+         </span>
+         <input type="mail" autocomplete="off" id="adresse" formControlName="adresse"
+            placeholder="{{startupFind.adresse}}">
+      </div>
+
+      <div>
+         <button (click)="update(this.startupFind)" class="btn btn-success">Update</button>
+      </div>
+   </div>
 </form>

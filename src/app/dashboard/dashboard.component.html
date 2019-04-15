@@ -1,42 +1,12 @@
-<form [formGroup]="startupForm">
-   <div class="container">
-      <h2>Add new startup</h2>
-
-      <div>
-         <!-- Requis 20 max -->
-         <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
+ <div class="contained">
+   <div class="row">
+      <div class="col-4">
+         <app-consultant-list></app-consultant-list>
       </div>
 
-      <div>
-         <!-- 10 max -->
-         <input type="text" autocomplete="off" id="secteur" formControlName="secteur" placeholder="Secteur d'activité">
+      <div class="col-8">
+         <app-startup-list></app-startup-list>
       </div>
 
-      <div>
-         <!-- requis 15 max -->
-         <input type="text" autocomplete="off" id="representant" formControlName="representant"
-            placeholder="Représentant légal">
-      </div>
-
-      <div>
-         <!-- requis nombre obligatoire -->
-         <input type="text" autocomplete="off" id="nbrFondateur" formControlName="cofondateur"
-            placeholder="Nombre de co-fondateurs">
-      </div>
-
-      <div>
-         <!-- Description détallé du projet (requis,textarea max 250) -->
-         <input type="text" autocomplete="off" id="description" formControlName="description"
-            placeholder="Description détaillé du projet">
-      </div>
-
-      <div>
-         <!-- adresse non obligatoire (champ texte de 25 max). -->
-         <input type="text" autocomplete="off" id="adresse" formControlName="adresse" placeholder="Adresse">
-      </div>
-
-      <div>
-         <button (click)="register()">Register</button>
-      </div>
    </div>
-</form>
+</div>

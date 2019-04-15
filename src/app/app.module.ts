@@ -22,6 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StartupListComponent } from './startup-list/startup-list.component';
 import { ModificationPageComponent } from './modification-page/modification-page.component';
 import { AddStartupComponent } from './add-startup/add-startup.component';
+import { ConsultantListComponent } from './consultant-list/consultant-list.component';
+import { AddConsultantComponent } from './add-consultant/add-consultant.component';
+import { ModifyConsultantComponent } from './modify-consultant/modify-consultant.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { AddStartupComponent } from './add-startup/add-startup.component';
     StartupListComponent,
     ModificationPageComponent,
     AddStartupComponent,
+    ConsultantListComponent,
+    AddConsultantComponent,
+    ModifyConsultantComponent,
   ],
   imports: [
     HttpClientModule,
@@ -59,9 +65,22 @@ import { AddStartupComponent } from './add-startup/add-startup.component';
         component: HomeComponent
       },
       {
-        path: 'liste',
+        path: 'startups',
         component: StartupListComponent,
-      },{
+      },
+      {
+        path:'consultants',
+        component:ConsultantListComponent
+      },
+      {
+        path: 'consultant/add',
+        component:AddConsultantComponent,
+      },
+      {
+        path: 'consultant/:id',
+        component:ModifyConsultantComponent,
+      },
+      {
         path: 'startup/add',
         component:AddStartupComponent,
       },

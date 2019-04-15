@@ -1,3 +1,22 @@
+table, th, tr, td {
+    border: 1px solid black;
+    align-content: center;
+}
+
+.table{
+    color:white;
+    background: #25007a;
+}
+tr:nth-child(2n+1){
+    background:#3600b3;
+    color:WHITE;
+}
+
+tr:not(:first-child):hover{
+    background: #200069;
+
+}
+
 form {
     float: left;
     display:flex;
@@ -21,22 +40,7 @@ form {
     border-radius: 20px;
 }
 
-input{
-    min-width: 300px;
-    max-width: 300px;
-    border-radius:0 10px 10px 0;
-}
-
-.input-group-prepend{
-    margin:10px;
-}
-
-.container:hover{
+/* .container:hover{
     background: #2b0091;
     color:white;
-}
-
- div .errors {
-    font-weight: bold;
-    color: red;
- }
+} */

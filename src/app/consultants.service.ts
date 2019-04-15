@@ -21,12 +21,12 @@ export class ConsultantsService {
 
   constructor() { }
 
-  addConsultant(consultant) {
+  add(consultant) {
     this.consultants.push(consultant);
     console.log("Successfully added consultant : " + consultant);
   }
 
-  removeConsultant(consultant) {
+  delete(consultant) {
     this.consultants.forEach( (consultantInList, index) => {
       if(consultantInList === consultant) this.consultants.splice(index,1);
     });
@@ -43,6 +43,15 @@ export class ConsultantsService {
     console.log(consultant);
     return consultant;
   }
+
+  update(consultantToUpdate) {
+    this.consultants.forEach((item, index) => {
+      if (item === consultantToUpdate) {
+        console.log('update : ', consultantToUpdate);
+      }
+    });
+  }
+
   list() {
     return this.consultants;
   }

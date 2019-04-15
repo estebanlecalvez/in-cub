@@ -2,41 +2,61 @@
    <div class="container">
       <h2>Add new startup</h2>
 
-      <div>
-         <!-- Requis 20 max -->
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/account.svg" alt="Nom">
+         </span>
          <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
       </div>
 
-      <div>
-         <!-- 10 max -->
+
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/map.svg" alt="Secteur">
+         </span>
          <input type="text" autocomplete="off" id="secteur" formControlName="secteur" placeholder="Secteur d'activité">
       </div>
 
-      <div>
-         <!-- requis 15 max -->
+
+      <!-- requis 15 max -->
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/face.svg" alt="Représentant">
+         </span>
          <input type="text" autocomplete="off" id="representant" formControlName="representant"
-            placeholder="Représentant légal">
+            placeholder="Représentant Légal">
       </div>
 
-      <div>
-         <!-- requis nombre obligatoire -->
-         <input type="text" autocomplete="off" id="nbrFondateur" formControlName="cofondateur"
-            placeholder="Nombre de co-fondateurs">
+
+
+      <!-- requis nombre obligatoire -->
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/supervisor.svg" alt="Co-fondateur">
+         </span>
+         <input type="number" autocomplete="off" id="nbrFondateur" formControlName="nbrFondateur"
+            placeholder="Nombre co-fondateurs">
       </div>
 
-      <div>
-         <!-- Description détallé du projet (requis,textarea max 250) -->
+
+      <!-- Description détallé du projet (requis,textarea max 250) -->
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/create.svg" alt="Description">
+         </span>
          <input type="text" autocomplete="off" id="description" formControlName="description"
             placeholder="Description détaillé du projet">
       </div>
 
-      <div>
-         <!-- adresse non obligatoire (champ texte de 25 max). -->
-         <input type="text" autocomplete="off" id="adresse" formControlName="adresse" placeholder="Adresse">
+      <!-- adresse non obligatoire (champ texte de 25 max). -->
+
+      <div class="input-group-prepend">
+         <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/place.svg" alt="Adresse">
+         </span>
+         <input type="mail" autocomplete="off" id="adresse" formControlName="adresse" placeholder="Adresse">
       </div>
 
-      <div>
-         <button class="btn btn-success" (click)="register()"routerLink="/liste">Add Startup</button>
-      </div>
+      <button class="btn btn-success" (click)="register()" routerLink="/dashboard">Add Startup</button>
    </div>
 </form>

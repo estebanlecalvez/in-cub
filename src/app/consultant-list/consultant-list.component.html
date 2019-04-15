@@ -1,0 +1,21 @@
+<div class="container">
+    <table class="table" id="listStartup">
+      <tr>
+        <th scope="col">Nom complet</th>
+        <th scope="col">Modification</th>
+        <th scope="col">Delete</th>
+      </tr>
+      <tr *ngFor="let consultant of consultants; " >
+        <td>{{consultant.nomConsultant}}</td>
+        
+        <td>
+          <button class="btn btn-primary"routerLink="/consultant/{{consultant.id}}">Modification</button>
+    
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(consultant)">Delete</button>
+        </td>
+      </tr>
+    </table>
+    <button class="btn btn-success" routerLink="/consultant/add">Add Consultant</button>
+  </div>

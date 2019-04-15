@@ -1,50 +1,285 @@
-.logo{
-    position:absolute;
-    display:flex;
-    margin-left:185px;
-    margin-top:20px;
+input {
+  position: fixed;
+  opacity: 0;
+}
+label {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+label::before {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.356);
+  content: '';
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+label .burger {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 3;
+  width: 2em;
+  height: 2em;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+label .burger::before, label .burger .bar, label .burger::after {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 12%;
+  background: #1c005e;
+  content: '';
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+label .burger .bar {
+  top: 44%;
+}
+label .burger::before {
+  top: 0;
+  transform-origin: top left;
+}
+label .burger::after {
+  bottom: 0;
+  transform-origin: bottom left;
+}
+input:focus + label .burger, label:hover .burger {
+  opacity: 0.75;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  transform: translate3d(0, 0, 0);
+  /* material acceleration */
+  transform: translateX(-100%);
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+nav::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 25em;
+  background: #1c005e;
+  content: '';
+  transform: skewX(15deg) translateX(-100%);
+  transform-origin: bottom left;
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media (min-width: 40em) {
+  nav::before {
+    width: 40em;
   }
-  .menu {
-    display:flex;
-    width:100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: #25007a;
-      padding: 0 300px 0 300px;
-      margin-top:94px;
-      margin-bottom:50px;
-      border-radius:10px;
-    }
-  
-    ul:hover{ 
-      background: #2b0091;
-    }
-    
-    li {
-      padding-left:10px;
-      float: left;
-    }
-    
-    li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
-    
-    /* Change the link color to #111 (black) on hover */
-    li a:hover {
-      background-color: rgb(42, 0, 194);
-      border-radius:10px;
-    }
+}
+nav a {
+  margin: 0.5em 0;
+  padding: 0.2em 2em;
+  font-size: 1.5em;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transform: translateX(-100%);
+  transition: color 0.15s, transform 0.5s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+nav a:nth-child(1) {
+  transition-delay: 0s, 100ms;
+}
+nav a:nth-child(2) {
+  transition-delay: 0s, 150ms;
+}
+nav a:nth-child(3) {
+  transition-delay: 0s, 200ms;
+}
+nav a:nth-child(4) {
+  transition-delay: 0s, 250ms;
+}
+nav a:nth-child(5) {
+  transition-delay: 0s, 300ms;
+}
+nav a:nth-child(6) {
+  transition-delay: 0s, 350ms;
+}
+nav a:hover, nav a:focus {
+  color: rgb(203, 211, 255);
+}
+main {
+  overflow: hidden;
+}
+.rest-of-the-page{
+  margin-bottom:0px;
+  margin-left:50px;
+}
 
-    
+.logo img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:150px;
+  height:auto;
+}
+
+main .content {
+  transform: translate3d(0, 0, 0);
+  /* material acceleration */
+  will-change: transform, filter;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+[id="navcheck"]:checked + label::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+[id="navcheck"]:checked + label .burger::before, [id="navcheck"]:checked + label .burger::after {
+  width: 141.42%;
+}
+[id="navcheck"]:checked + label .burger::before {
+  transform: rotate(45deg) translateY(-50%);
+}
+[id="navcheck"]:checked + label .burger::after {
+  transform: rotate(-45deg) translateY(50%);
+}
+[id="navcheck"]:checked + label .burger .bar {
+  transform: scale(0.1);
+}
+[id="navcheck"]:checked ~ nav {
+  transform: translateX(0);
+}
+[id="navcheck"]:checked ~ nav::before {
+  transform: skewX(15deg) translateX(0);
+}
+[id="navcheck"]:checked ~ nav a {
+  transform: translateX(0);
+}
+[id="navcheck"]:checked ~ main .content {
+  transform: translateX(3em);
+  transform-origin: left center;
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
+  /* quite laggy :S */
+}
+/* helper */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/* misc */
+body {
+  overflow-x: hidden;
+  background: #444;
+  color: white;
+  font: 1em/1.4 "lato";
+}
+main {
+  background: #3498db;
+  padding: 5% 0;
+}
+article {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.3em;
+}
+@media (min-width: 60em) {
+  article {
+    width: 50%;
+  }
+}
+h1 {
+  font: 2.5em/1.4 "roboto condensed";
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* .container {
+  display: flex; 
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  margin-top:30px;
+  margin-bottom:30px;
+
+}
+
+.item {
+  color: white;
+  background:#25007a;
+  text-decoration: none;
+  font-family: sans-serif;
+  padding: 24px;
+  border-radius:20px;
+}
+
+.item:hover{
+  box-shadow: 5px 10px 10px #888888;
+  transform: scale(0.95);
+}
+.item:nth-of-type(n+4) {
+  order: 2;
+}
+@media all and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .logo {
+    order: 0;
+    text-align: center;
+    width: 100px;
+    margin: auto auto 20px;
+  }
+  .item {
+    text-align: center;
+    border-bottom: 1px solid #111;
+  }
+} 
+
+ */
