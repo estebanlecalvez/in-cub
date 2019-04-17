@@ -25,9 +25,12 @@ import { AddStartupComponent } from './add-startup/add-startup.component';
 import { ConsultantListComponent } from './consultant-list/consultant-list.component';
 import { AddConsultantComponent } from './add-consultant/add-consultant.component';
 import { ModifyConsultantComponent } from './modify-consultant/modify-consultant.component';
+import { CoFoundersPipe, AdressPipe } from './customPipes';
 
 @NgModule({
   declarations: [
+    CoFoundersPipe,
+    AdressPipe,
     AppComponent,
     HomeComponent,
     LoginComponent,
@@ -56,13 +59,9 @@ import { ModifyConsultantComponent } from './modify-consultant/modify-consultant
         component: RegisterComponent
       },
       {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent,
         // canActivate:[AuthGuard]
-      },
-      {
-        path: '',
-        component: HomeComponent
       },
       {
         path: 'startups',
@@ -93,7 +92,7 @@ import { ModifyConsultantComponent } from './modify-consultant/modify-consultant
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

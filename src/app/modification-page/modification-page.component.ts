@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 // Service
@@ -13,7 +13,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./modification-page.component.css']
 })
 export class ModificationPageComponent implements OnInit {
-
+  @Input() idStartup: number;
   error = '';
   startupFind;
   idFind;
@@ -24,23 +24,23 @@ export class ModificationPageComponent implements OnInit {
   cofondateurCtrl: FormControl;
   descriptionCtrl: FormControl;
   adresseCtrl: FormControl;
+  idCtrl: FormControl;
 
   startupForm: FormGroup;
-  
   ngOnInit() {
     // Get id param
-    this.route.paramMap.subscribe(params => {
-      this.find(params.get("id"));
-    })
+    this.find(this.idStartup);
+
+
   }
 
   constructor(private route: ActivatedRoute, fb: FormBuilder, private startupService: StartupsServiceService) {
-    this.nomCtrl = fb.control('');
+    this.nomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
     this.secteurCtrl = fb.control('', [Validators.required, Validators.maxLength(25)]);
-    this.representantCtrl = fb.control('', [Validators.required, Validators.pattern('[1-9]*')]);
-    this.cofondateurCtrl = fb.control('');
-    this.descriptionCtrl = fb.control('');
-    this.adresseCtrl = fb.control('', Validators.email);
+    this.representantCtrl = fb.control('', [Validators.required, Validators.maxLength(15)]);
+    this.cofondateurCtrl = fb.control('', [Validators.required, Validators.pattern('[1-9]*')]);
+    this.descriptionCtrl = fb.control('', [Validators.required, Validators.maxLength(250)]);
+    this.adresseCtrl = fb.control('');
 
     this.startupForm = fb.group({
       nom: this.nomCtrl,
@@ -63,36 +63,22 @@ export class ModificationPageComponent implements OnInit {
   }
 
 
-// Get one stratup by id
-  find(id){
+  // Get one stratup by id
+  find(id) {
+    console.log("Startup id" + this.idStartup);
+
     this.startupFind = this.startupService.findOne(id);
-
-    console.log(this.startupFind)
   }
 
-  register() {
-    this.startupService.add(this.startupForm.value)
+
+
+  update() {
+    let startup = [];
+    startup.push(this.idFind + this.startupForm.value);
+    console.log(startup);
+    this.startupService.update(this.startupForm.value);
   }
 
-  modify(startup){
-    this.startupService.update(startup);
-  }
-
-  update(startup){
-    console.log(startup)
-
-    let nomUpdate = this.nomCtrl.value;
-    let secteurUpdate = this.secteurCtrl.value;
-    let representantUpdate = this.representantCtrl.value;
-    let cofondateurUpdate = this.cofondateurCtrl.value;
-    let descriptionUpdate = this.cofondateurCtrl.value;
-    let adresseUpdate = this.cofondateurCtrl.value; 
-
-    console.log(nomUpdate);
-
-    // TODO - Renvoyer vers le service avec les
-    // valeurs ci dessus
-  }
 }
 
 

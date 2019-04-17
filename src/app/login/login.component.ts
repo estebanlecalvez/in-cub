@@ -8,13 +8,16 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  isConnected;
   constructor(private Auth:AuthService,
     private router:Router) { }
 
   ngOnInit() {
   }
 
+  getIsConnected(){
+    return this.isConnected;
+  }
   loginUser(event){
     event.preventDefault()
     const target = event.target;
@@ -25,7 +28,9 @@ export class LoginComponent implements OnInit {
       if(data.success){
         this.router.navigate(["dashboard"])
         this.Auth.setLoggedIn(true)
+        this.isConnected = true;
       }else{
+        this.isConnected = false;
         window.alert(data.message);
       }
     })

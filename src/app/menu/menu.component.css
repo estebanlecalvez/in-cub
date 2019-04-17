@@ -45,6 +45,7 @@ label .burger::before, label .burger .bar, label .burger::after {
   content: '';
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
+
 label .burger .bar {
   top: 44%;
 }
@@ -56,8 +57,10 @@ label .burger::after {
   bottom: 0;
   transform-origin: bottom left;
 }
-input:focus + label .burger, label:hover .burger {
-  opacity: 0.75;
+input:focus + label .burger, label:hover .burger,label {
+  color:white;
+  background:white;
+  border-radius:20px;
 }
 nav {
   position: fixed;
@@ -89,9 +92,9 @@ nav::before {
   will-change: transform;
   transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
-@media (min-width: 40em) {
+@media (min-width: 30em) {
   nav::before {
-    width: 40em;
+    width: 30em;
   }
 }
 nav a {
@@ -140,6 +143,10 @@ main {
   margin-right: auto;
   width:150px;
   height:auto;
+}
+
+.logo:hover img:hover{
+  /* transform: scale(0.95); */
 }
 
 main .content {

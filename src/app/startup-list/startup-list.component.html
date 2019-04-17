@@ -1,4 +1,6 @@
 <div class="container">
+  <button class="btn btn-success" (click)="showAddingForm()">Add Startup</button>
+  <app-add-startup *ngIf="showAddForm"></app-add-startup>
   <table class="table" id="listStartup">
     <tr>
       <th scope="col">Nom</th>
@@ -10,22 +12,22 @@
       <th scope="col">Modification</th>
       <th scope="col">Delete</th>
     </tr>
-  
-    <tr *ngFor="let startup of startups; " >
+
+    <tr *ngFor="let startup of startups; ">
       <td>{{startup.nom}}</td>
       <td>{{startup.secteur}}</td>
       <td>{{startup.representant}}</td>
-      <td>{{startup.cofondateur}}</td>
+      <td>{{startup.cofondateur | CoFoundersPipe}}</td>
       <td>{{startup.description}}</td>
-      <td>{{startup.adresse}}</td>
+      <td>{{startup.adresse | AdressPipe}}</td>
       <td>
-        <button class="btn btn-primary"routerLink="/startup/{{startup.id}}">Modification</button>
-  
+        <button class="btn btn-primary" (click)="showModificationForm(startup.id)">Modification</button>
       </td>
       <td>
         <button class="btn btn-danger" (click)="delete(startup)">Delete</button>
       </td>
     </tr>
   </table>
-  <button class="btn btn-success" routerLink="/startup/add">Add Startup</button>
+  <app-modification-page *ngIf="showModifForm" idStartup="{{id}}"></app-modification-page>
+
 </div>
