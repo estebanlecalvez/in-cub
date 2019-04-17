@@ -53,9 +53,36 @@ public class StartupResource {
     return startupRepository.save(newStartup);
   }
 
+  // http://localhost:8095/startup/update
+  /*
+    {
+      "id": 0,
+      "name": "Test update",
+      "secteur": "Informatique",
+      "representant": "Le Calvez Kévin",
+      "nbrCoFondateurs": 2,
+      "description": "Entreprise internationnale",
+      "adresse": "15 rue du malbilay 35000 Rennes"
+    }
+   */
   @PutMapping("/update")
   public ResponseEntity<Startup> updateStartup(@RequestBody Startup startupToUpdate){
-    Startup startupUpdated = startupRepository.save(startupToUpdate);
-    return new ResponseEntity<Startup>(startupUpdated, HttpStatus.ACCEPTED);
+    Startup startupFind = startupRepository.findOne(startupToUpdate.getId());
+
+    if(startupFind == null) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }else{
+      startupFind.setName(startupToUpdate.getName());
+      startupFind.setSecteur(startupToUpdate.getSecteur());
+      startupFind.setRepresentant(startupToUpdate.getRepresentant());
+      startupFind.setNbrCoFondateurs(startupToUpdate.getNbrCoFondateurs());
+      startupFind.setDescription(startupToUpdate.getDescription());
+      startupFind.setAdresse(startupToUpdate.getAdresse());
+
+      startupRepository.delete(startupFind.getId());
+      startupRepository.save(startupFind);
+
+      return new ResponseEntity<>(startupFind, HttpStatus.ACCEPTED);
+    }
   }
 }
