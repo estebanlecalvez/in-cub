@@ -12,12 +12,12 @@ form {
 
 .container{
     display: flex;
-    color:rgb(211, 211, 211);
+    color:#25007a;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 30px;
-    background: #25007a;
+    /* background: #25007a; */
     border-radius: 20px;
 }
 
@@ -27,16 +27,19 @@ input{
     border-radius:0 10px 10px 0;
 }
 
+textarea{
+    min-width: 300px;
+    max-width: 300px;
+    border-radius:0 10px 10px 0;
+}
+
 .input-group-prepend{
     margin:10px;
 }
 
-.container:hover{
-    background: #2b0091;
-    color:white;
-}
+
 
  div .errors {
     font-weight: bold;
-    color: red;
+    color: rgb(235, 199, 0);
  }

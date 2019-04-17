@@ -1,62 +1,95 @@
-<form [formGroup]="startupForm">
-   <div class="container">
-      <h2>Add new startup</h2>
-
-      <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1">
-            <img src="../../assets/account.svg" alt="Nom">
-         </span>
-         <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
+<div class="container">
+      <div class="card text-white bg-white mb-3 box shadow" >
+         <div class="card-header" style="    color:#25007a;">
+            <h5>Add startup</h5>
+         </div>
+         <form [formGroup]="startupForm">
+            <div class="card-body">
+   
+               <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                     <img src="../../assets/account.svg" alt="Nom">
+                  </span>
+                  <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
+               </div>
+               <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('required')">
+                  <p>Le champ est obligatoire</p>
+               </div>
+               <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('maxlength')">
+                  <p>Le ne peut pas comporter plus de 20 caractères</p>
+               </div>
+   
+   
+   
+               <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                     <img src="../../assets/map.svg" alt="Secteur">
+                  </span>
+                  <input type="text" autocomplete="off" id="secteur" formControlName="secteur"
+                     placeholder="Secteur d'activité">
+               </div>
+               <div class="errors" *ngIf="secteurCtrl.dirty && secteurCtrl.hasError('required')">
+                  <p>Le champ est obligatoire</p>
+               </div>
+               <div class="errors" *ngIf="secteurCtrl.dirty && secteurCtrl.hasError('maxlength')">
+                  <p>Le ne peut pas comporter plus de 25 caractères</p>
+               </div>
+   
+   
+   
+               <!-- requis 15 max -->
+               <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                     <img src="../../assets/face.svg" alt="Représentant">
+                  </span>
+                  <input type="text" autocomplete="off" id="representant" formControlName="representant"
+                     placeholder="Représentant">
+               </div>
+               <div class="errors" *ngIf="representantCtrl.dirty && representantCtrl.hasError('required')">
+                  <p>Le champ est obligatoire</p>
+               </div>
+               <div class="errors" *ngIf="representantCtrl.dirty && representantCtrl.hasError('maxlength')">
+                  <p>Le champ ne peut pas contenir plus de 15 caractères</p>
+               </div>
+   
+   
+   
+   
+               <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                     <img src="../../assets/supervisor.svg" alt="Co-fondateur">
+                  </span>
+                  <input type="number" autocomplete="off" id="cofondateur" formControlName="cofondateur"
+                     placeholder="Nombre de co-fondateurs">
+               </div>
+               <div class="errors" *ngIf="cofondateurCtrl.dirty && cofondateurCtrl.hasError('required')">
+                  <p>Le champ est obligatoire et doit être un nombre</p>
+               </div>
+   
+               <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                     <img src="../../assets/place.svg" alt="Adresse">
+                  </span>
+                  <input type="mail" autocomplete="off" id="adresse" formControlName="adresse"
+                     placeholder="Adresse">
+               </div>
+   
+               <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                     <img src="../../assets/create.svg" alt="Description">
+                  </span>
+                  <textarea name="message" class="form-control" rows="3" id="description" formControlName="description"
+                     placeholder="Description"></textarea>
+               </div>
+               <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('required')">
+                  <p>Le champ est obligatoire</p>
+               </div>
+               <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('maxlength')">
+                  <p>Le champ ne peut pas contenir plus de 250 caractères</p>
+               </div>
+               <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="register()">Add</button>
+            </div>
+   
+         </form>
       </div>
-
-
-      <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1">
-            <img src="../../assets/map.svg" alt="Secteur">
-         </span>
-         <input type="text" autocomplete="off" id="secteur" formControlName="secteur" placeholder="Secteur d'activité">
-      </div>
-
-
-      <!-- requis 15 max -->
-      <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1">
-            <img src="../../assets/face.svg" alt="Représentant">
-         </span>
-         <input type="text" autocomplete="off" id="representant" formControlName="representant"
-            placeholder="Représentant Légal">
-      </div>
-
-
-
-      <!-- requis nombre obligatoire -->
-      <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1">
-            <img src="../../assets/supervisor.svg" alt="Co-fondateur">
-         </span>
-         <input type="number" autocomplete="off" id="nbrFondateur" formControlName="nbrFondateur"
-            placeholder="Nombre co-fondateurs">
-      </div>
-
-
-      <!-- Description détallé du projet (requis,textarea max 250) -->
-      <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1">
-            <img src="../../assets/create.svg" alt="Description">
-         </span>
-         <input type="text" autocomplete="off" id="description" formControlName="description"
-            placeholder="Description détaillé du projet">
-      </div>
-
-      <!-- adresse non obligatoire (champ texte de 25 max). -->
-
-      <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1">
-            <img src="../../assets/place.svg" alt="Adresse">
-         </span>
-         <input type="mail" autocomplete="off" id="adresse" formControlName="adresse" placeholder="Adresse">
-      </div>
-
-      <button class="btn btn-success" (click)="register()" routerLink="/dashboard">Add Startup</button>
    </div>
-</form>

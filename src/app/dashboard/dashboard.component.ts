@@ -11,10 +11,14 @@ import { ConsultantsService } from '../consultants.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {  
-  ngOnInit() {
+  startups;
+  consultants;
+  constructor(fb: FormBuilder, private startupService: StartupsServiceService,private consultantService:ConsultantsService) {
   }
 
-  constructor(fb: FormBuilder, private startupService: StartupsServiceService,private consultantService:ConsultantsService) {
+  ngOnInit() {
+    this.startups = this.startupService.list();
+    this.consultants = this.consultantService.list();
   }
 
 }

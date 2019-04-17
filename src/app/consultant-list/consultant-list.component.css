@@ -31,12 +31,12 @@ form {
 
 .container{
     display: flex;
-    color:rgb(211, 211, 211);
+    color:#25007a;;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 30px;
-    background: #25007a;
+    /* background: #25007a; */
     border-radius: 20px;
 }
 

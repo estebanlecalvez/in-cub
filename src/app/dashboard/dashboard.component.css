@@ -2,6 +2,9 @@ table, th, tr, td {
     border: 1px solid black;
     align-content: center;
 }
+.card:hover{
+    transform: scale(0.95);
+}
 
 .table{
     color:white;
@@ -23,3 +26,11 @@ tr:not(:first-child):hover{
     border-radius:20px;
 }
 
+
+
+.container{
+    display: flex;
+    color:white;
+    flex-direction: column;
+    padding: 30px;
+}

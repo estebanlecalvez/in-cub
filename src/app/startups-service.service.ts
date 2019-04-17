@@ -9,27 +9,27 @@ export class StartupsServiceService {
   consultants = new ConsultantsService();
   startups = [{
     id: 1,
-    nom: 'Default',
+    nom: 'Kurmi Software',
     secteur: 'Rennes',
     representant: this.consultants.findOne(1).nomConsultant,
-    cofondateur: this.consultants.findOne(2).nomConsultant,
-    description: 'Startup Default',
+    cofondateur: 1,
+    description: 'Startup Kurmi Software',
     adresse: 'default@startup.net'
   }, {
     id: 2,
-    nom: 'Default',
+    nom: 'Infotel',
     secteur: 'Rennes',
     representant: this.consultants.findOne(1).nomConsultant,
-    cofondateur: this.consultants.findOne(2).nomConsultant,
-    description: 'Startup Default',
+    cofondateur:2,
+    description: 'Startup Infotel',
     adresse: 'default@startup.net'
   }, {
     id: 3,
-    nom: 'Default',
+    nom: 'Proservia',
     secteur: 'Rennes',
     representant: this.consultants.findOne(1).nomConsultant,
-    cofondateur: this.consultants.findOne(2).nomConsultant,
-    description: 'Startup Default',
+    cofondateur: 3,
+    description: 'Startup Proservia',
     adresse: 'default@startup.net'
   }
   ];
@@ -53,10 +53,10 @@ export class StartupsServiceService {
     });
   }
 
-  update(startupToUpdate) {
-    this.startups.forEach((item, index) => {
-      if (item === startupToUpdate) {
-        console.log('update : ', startupToUpdate);
+  update(newStartup) {
+    this.startups.forEach((startup, index) => {
+      if (startup.id === newStartup.id) {
+        startup = newStartup;
       }
     });
   }

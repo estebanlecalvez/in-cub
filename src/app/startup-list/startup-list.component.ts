@@ -9,10 +9,21 @@ import { StartupsServiceService } from '../startups-service.service'
   styleUrls: ['./startup-list.component.css']
 })
 export class StartupListComponent implements OnInit {
-
+  showModifForm;
+  showAddForm;
+  id;
   startups = [];
 
   constructor(private startupService: StartupsServiceService) { }
+
+  showModificationForm(idStartup){
+    this.showModifForm = !this.showModifForm;
+    this.id = idStartup;
+  }
+
+  showAddingForm(){
+    this.showAddForm = !this.showAddForm;
+  }
 
   ngOnInit() {
     this.startups = this.startupService.list();

@@ -7,15 +7,21 @@ export class ConsultantsService {
   consultants = [
     {
       id: 1,
-      nomConsultant: "Jean-Yves Durand",
+      nom: "Durand",
+      prenom:"Jean-Yves",
+      description:"Consultant senior."
     },    
     {
       id: 2,
-      nomConsultant: "Pierre La Fondue",
+      nom:"Lafondue",
+      prenom:"Pierre",
+      description:"Consultant junior."
     },
     {
       id: 3,
-      nomConsultant: "Monique Ranou",
+      nom:"Ranou",
+      prenom:"Monique",
+      description:"Consultante senior."
     },
   ];
 

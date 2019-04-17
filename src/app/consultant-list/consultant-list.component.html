@@ -1,12 +1,16 @@
 <div class="container">
     <table class="table" id="listStartup">
       <tr>
-        <th scope="col">Nom complet</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Description</th>
         <th scope="col">Modification</th>
         <th scope="col">Delete</th>
       </tr>
       <tr *ngFor="let consultant of consultants; " >
-        <td>{{consultant.nomConsultant}}</td>
+          <td>{{consultant.nom}}</td>
+          <td>{{consultant.prenom}}</td>
+          <td>{{consultant.description}}</td>
         
         <td>
           <button class="btn btn-primary"routerLink="/consultant/{{consultant.id}}">Modification</button>
