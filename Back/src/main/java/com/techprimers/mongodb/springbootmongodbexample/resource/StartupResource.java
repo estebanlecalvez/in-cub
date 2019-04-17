@@ -26,8 +26,8 @@ public class StartupResource {
 
   // http://localhost:8095/startup/find/0
   @GetMapping("/find/{id}")
-  public ResponseEntity<Startup> findById( @PathVariable(value="id") Long id){
-    Startup startup = startupRepository.findOne(id.intValue());
+  public ResponseEntity<Startup> findById( @PathVariable int id){
+    Startup startup = startupRepository.findOne(id);
 
     if(startup != null){
       return new ResponseEntity<Startup>(startup, HttpStatus.OK);
@@ -53,7 +53,7 @@ public class StartupResource {
     return startupRepository.save(newStartup);
   }
 
-  // http://localhost:8095/startup/update
+  // PUT - http://localhost:8095/startup/update
   /*
     {
       "id": 0,
@@ -84,5 +84,12 @@ public class StartupResource {
 
       return new ResponseEntity<>(startupFind, HttpStatus.ACCEPTED);
     }
+  }
+
+  // DELETE - http://localhost:8095/startup/delete/0
+  @DeleteMapping("/delete/{id}")
+  public ResponseEntity deleteOne(@PathVariable int id){
+    startupRepository.delete(id);
+    return new ResponseEntity(HttpStatus.OK);
   }
 }
