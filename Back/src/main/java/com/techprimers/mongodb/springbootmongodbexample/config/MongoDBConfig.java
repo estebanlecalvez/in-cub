@@ -18,7 +18,7 @@ public class MongoDBConfig {
     @Bean
     CommandLineRunner commandLineRunner(StartupRepository startupRepository) {
         return strings -> {
-            startupRepository.save(new Startup(1, "Infotel", "Informatique", "Le Calvez Kévin", 2, "Entreprise internationnale", "15 rue du malbilay 35000 Rennes"));
+            startupRepository.save(new Startup(0, "Infotel", "Informatique", "Le Calvez Kévin", 2, "Entreprise internationnale", "15 rue du malbilay 35000 Rennes"));
         };
     }
 

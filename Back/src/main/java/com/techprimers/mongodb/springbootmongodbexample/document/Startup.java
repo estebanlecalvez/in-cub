@@ -15,6 +15,10 @@ public class Startup {
   private String description;
   private String adresse;
 
+  // Necessaire pour la déserialisation de l'entités par mongo
+  public Startup() {
+  }
+
   public Startup(int id, String name, String secteur, String representant, int nbrCoFondateurs,
                  String description, String adresse) {
     this.id = id;
