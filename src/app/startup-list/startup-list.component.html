@@ -13,11 +13,11 @@
       <th scope="col">Delete</th>
     </tr>
 
-    <tr *ngFor="let startup of startups; ">
-      <td>{{startup.nom}}</td>
+    <tr *ngFor="let startup of startups;">
+      <td>{{startup.name}}</td>
       <td>{{startup.secteur}}</td>
       <td>{{startup.representant}}</td>
-      <td>{{startup.cofondateur | CoFoundersPipe}}</td>
+      <td>{{startup.nbrCoFondateurs | CoFoundersPipe}}</td>
       <td>{{startup.description}}</td>
       <td>{{startup.adresse | AdressPipe}}</td>
       <td>
@@ -26,7 +26,7 @@
       <td>
         <button class="btn btn-danger" (click)="delete(startup)">Delete</button>
       </td>
-    </tr>
+    </tr> 
   </table>
   <app-modification-page *ngIf="showModifForm" idStartup="{{id}}"></app-modification-page>
 

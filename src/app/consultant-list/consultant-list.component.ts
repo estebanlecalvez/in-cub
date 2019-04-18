@@ -18,6 +18,12 @@ export class ConsultantListComponent implements OnInit {
 
   ngOnInit() {
     this.consultants = this.consultantService.list();
+    this.consultants = this.consultantService.list();
+    this.consultants = this.consultantService.list();
+    this.consultants = this.consultantService.list();
+    this.consultants = this.consultantService.list();
+    this.consultants = this.consultantService.list();
+    this.consultants = this.consultantService.list();
   }
 
   delete(consultantToDelete){

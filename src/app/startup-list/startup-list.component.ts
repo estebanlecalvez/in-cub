@@ -28,6 +28,12 @@ export class StartupListComponent implements OnInit {
 
   ngOnInit() {
     this.startups = this.startupService.list();
+    this.startups = this.startupService.list();
+    this.startups = this.startupService.list();
+    this.startups = this.startupService.list();
+    this.startups = this.startupService.list();
+    this.startups = this.startupService.list();
+    console.log(this.startups);
   }
 
   delete(startupToDelete){

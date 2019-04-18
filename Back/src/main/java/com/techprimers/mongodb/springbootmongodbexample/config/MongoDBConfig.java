@@ -14,16 +14,17 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories(basePackageClasses = StartupRepository.class)
 @Configuration
 public class MongoDBConfig {
-
     @Bean
     CommandLineRunner commandLineRunner(StartupRepository startupRepository) {
         return strings -> {
             Startup startup = startupRepository.findOne(0);
 
             if(startup == null){
-              startupRepository.save(new Startup(0, "Infotel", "Informatique", "Le Calvez Kévin", 2, "Entreprise internationnale", "15 rue du malbilay 35000 Rennes"));
+              startupRepository.save(new Startup(1, "Infotel", "Informatique", "Le Calvez Kévin", 2, "Entreprise internationnale", "15 rue du malbilay 35000 Rennes"));
+              startupRepository.save(new Startup(2, "Kurmi", "Informatique", "Le Calvez Esteban", 1, "Entreprise internationnale aussi lol", "38Ter rue de Rennes"));
             }
         };
     }
 
 }
+
