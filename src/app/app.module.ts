@@ -46,9 +46,6 @@ import { CoFoundersPipe, AdressPipe } from './customPipes';
   ],
   imports: [
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     RouterModule.forRoot([
       {
         path: 'login',

@@ -87,7 +87,7 @@
             <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('maxlength')">
                <p>Le champ ne peut pas contenir plus de 250 caractères</p>
             </div>
-            <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="update()">Update</button>
+            <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="update()" >Update</button>
          </div>
 
       </form>

@@ -11,15 +11,12 @@ import { ConsultantsService } from '../consultants.service';
 })
 export class AddConsultantComponent implements OnInit {
   error = '';
-
+  idConsultant;
   nomConsultantCtrl: FormControl;
 
 
   consultantForm: FormGroup;
   
-  ngOnInit() {
-  }
-
   constructor(fb: FormBuilder, private consultantService: ConsultantsService) {
     this.nomConsultantCtrl = fb.control('');
 
@@ -27,6 +24,10 @@ export class AddConsultantComponent implements OnInit {
     this.consultantForm = fb.group({
       nomConsultant: this.nomConsultantCtrl,
     });
+  }
+
+  ngOnInit(){
+    
   }
 
   //methods

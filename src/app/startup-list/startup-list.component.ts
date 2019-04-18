@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Service
 import { StartupsServiceService } from '../startups-service.service'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-startup-list',
@@ -12,7 +13,7 @@ export class StartupListComponent implements OnInit {
   showModifForm;
   showAddForm;
   id;
-  startups = [];
+  startups;
 
   constructor(private startupService: StartupsServiceService) { }
 
@@ -30,7 +31,7 @@ export class StartupListComponent implements OnInit {
   }
 
   delete(startupToDelete){
-    this.startupService.delete(startupToDelete);
+    this.startupService.deleteStartup(startupToDelete);
   }
 
   update(startupToUpdate){

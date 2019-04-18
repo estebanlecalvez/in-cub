@@ -1,3 +1,56 @@
-<p>
-  modify-consultant works!
-</p>
+<div class="container">
+    <div class="card text-white bg-white mb-3 box shadow" >
+       <div class="card-header" style="    color:#25007a;">
+          <h5>Update consultant {{consultantFind.nom}}</h5>
+       </div>
+       <form [formGroup]="startupForm">
+          <div class="card-body">
+ 
+             <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                   <img src="../../assets/account.svg" alt="Nom">
+                </span>
+                <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="{{consultantFind.nom}}">
+             </div>
+             <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('required')">
+                <p>Le champ est obligatoire</p>
+             </div>
+             <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('maxlength')">
+                <p>Le ne peut pas comporter plus de 20 caractères</p>
+             </div>
+ 
+ 
+             <!-- requis 15 max -->
+             <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                   <img src="../../assets/face.svg" alt="Représentant">
+                </span>
+                <input type="text" autocomplete="off" id="prenom" formControlName="prenom"
+                   placeholder="{{consultantFind.prenom}}">
+             </div>
+             <div class="errors" *ngIf="prenom.dirty && prenom.hasError('required')">
+                <p>Le champ est obligatoire</p>
+             </div>
+             <div class="errors" *ngIf="prenom.dirty && prenom.hasError('maxlength')">
+                <p>Le champ ne peut pas contenir plus de 15 caractères</p>
+             </div>  
+ 
+             <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                   <img src="../../assets/create.svg" alt="Description">
+                </span>
+                <textarea name="message" class="form-control" rows="3" id="description" formControlName="description"
+                   placeholder="{{consultantFind.description}}"></textarea>
+             </div>
+             <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('required')">
+                <p>Le champ est obligatoire</p>
+             </div>
+             <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('maxlength')">
+                <p>Le champ ne peut pas contenir plus de 250 caractères</p>
+             </div>
+             <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="update()">Update</button>
+          </div>
+ 
+       </form>
+    </div>
+ </div>

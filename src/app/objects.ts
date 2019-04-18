@@ -1,22 +1,21 @@
 export class Startup {
     id: number;
-    nom: string;
+    name: string;
     secteur: string;
     representant: string;
-    cofondateurs: number;
+    nbrCoFondateurs: number;
     description: string;
     adresse?: string;
     consultant?: Consultant
 
-    constructor(id: number, nom: string, secteur: string, representant: string, cofondateurs: number, description: string, adresse?: string, consultant?: Consultant) {
+    constructor(id: number, name: string, secteur: string, representant: string, nbrCoFondateurs: number, description: string, adresse?: string, consultant?: Consultant) {
         this.id = id;
-        this.nom = nom;
+        this.name = name;
         this.secteur = secteur;
         this.representant = representant;
-        this.cofondateurs = cofondateurs;
+        this.nbrCoFondateurs = nbrCoFondateurs;
         this.description = description;
         this.adresse = adresse;
-        this.consultant = consultant;
     }
 }
 

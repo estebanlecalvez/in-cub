@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ConsultantsService } from './consultants.service';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Startup } from './objects';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,7 @@ export class StartupsServiceService {
     nom: 'Infotel',
     secteur: 'Rennes',
     representant: this.consultants.findOne(1).nomConsultant,
-    cofondateur:2,
+    cofondateur: 2,
     description: 'Startup Infotel',
     adresse: 'default@startup.net'
   }, {
@@ -33,54 +36,36 @@ export class StartupsServiceService {
     adresse: 'default@startup.net'
   }
   ];
+  api = "localhost:8095/startup";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
   list() {
-    return this.startups;
+    this.http.get(`${this.api}/all`)
+      .subscribe((response: Array<Startup>) => {
+        return response;
+        // logs the array of race
+      });
   }
 
-  add(newStartup) {
-    this.startups.push(newStartup);
+  add(startup: Startup): Observable<Startup> {
+    return this.http.post<Startup>(`${this.api}/add`, startup);
   }
 
-  delete(startupToDelete) {
-    this.startups.forEach((item, index) => {
-      if (item === startupToDelete) this.startups.splice(index, 1);
-    });
+  deleteStartup(startup: Startup | number): Observable<Startup> {
+    const id = typeof startup === 'number' ? startup : startup.id;
+    const url = `${this.api}/delete/${id}`;
+    return this.http.delete<Startup>(url);
   }
 
-  update(newStartup) {
-    this.startups.forEach((startup, index) => {
-      if (startup.id === newStartup.id) {
-        startup = newStartup;
-      }
-    });
+  update(startup) {
+    return this.http.put(this.api,startup);
   }
 
   findOne(id) {
-    let startup;
-    this.startups.forEach(startupFind => {
-      if (startupFind.id == id) {
-        startup = startupFind;
-      }
-    });
-    console.log(startup);
-    return startup;
-  }
-
-  showUpdatedItem(newItem) {
-    let updateItem = this.startups.find(this.findIndexToUpdate, newItem.id);
-
-    let index = this.startups.indexOf(updateItem);
-
-    this.startups[index] = newItem;
-  }
-
-  findIndexToUpdate(newItem) {
-    return newItem.id === this;
+    return this.http.get(`${this.api}/find/${id}`)
   }
 }

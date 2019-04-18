@@ -34,7 +34,7 @@ export class ModificationPageComponent implements OnInit {
 
   }
 
-  constructor(private route: ActivatedRoute, fb: FormBuilder, private startupService: StartupsServiceService) {
+  constructor( fb: FormBuilder, private startupService: StartupsServiceService) {
     this.nomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
     this.secteurCtrl = fb.control('', [Validators.required, Validators.maxLength(25)]);
     this.representantCtrl = fb.control('', [Validators.required, Validators.maxLength(15)]);

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ConsultantsService } from '../consultants.service';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-modify-consultant',
@@ -6,10 +8,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modify-consultant.component.css']
 })
 export class ModifyConsultantComponent implements OnInit {
+  @Input() idConsultant:number;
+  nomCtrl: FormControl;
+  prenomCtrl: FormControl;
+  descriptionCtrl: FormControl;
+  startupForm: FormGroup;
 
-  constructor() { }
+
+  consultantFind;
+  constructor( fb: FormBuilder, private consultantService : ConsultantsService) {
+    this.nomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
+    this.prenomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
+    this.descriptionCtrl = fb.control('', [Validators.required, Validators.maxLength(250)]);
+
+    this.startupForm = fb.group({
+      nom: this.nomCtrl,
+      prenom : this.prenomCtrl,
+      description: this.descriptionCtrl,
+    });
+   }
 
   ngOnInit() {
   }
 
+  // Get one stratup by id
+  find(id) {
+    console.log("Startup id" + this.idConsultant);
+    this.consultantFind = this.consultantService.findOne(id);
+  }
+
+
+  
 }

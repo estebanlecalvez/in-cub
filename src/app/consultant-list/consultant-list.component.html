@@ -1,5 +1,7 @@
 <div class="container">
-    <table class="table" id="listStartup">
+    <button class="btn btn-success" (click)="showAddingForm()">Add Consultant</button>
+    <app-add-consultant *ngIf="showAddForm"></app-add-consultant>
+    <table class="table" id="listConsultant">
       <tr>
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
@@ -11,15 +13,13 @@
           <td>{{consultant.nom}}</td>
           <td>{{consultant.prenom}}</td>
           <td>{{consultant.description}}</td>
-        
         <td>
-          <button class="btn btn-primary"routerLink="/consultant/{{consultant.id}}">Modification</button>
-    
+          <button class="btn btn-primary" (click)="showModificationForm(consultant.id)">Modification</button>
         </td>
         <td>
           <button class="btn btn-danger" (click)="delete(consultant)">Delete</button>
         </td>
       </tr>
     </table>
-    <button class="btn btn-success" routerLink="/consultant/add">Add Consultant</button>
+    <app-modify-consultant *ngIf="showModifForm" idConsultant="{{id}}"></app-modify-consultant>
   </div>

@@ -5,13 +5,13 @@ import { StartupsServiceService } from './startups-service.service';
 @Injectable({
   providedIn: 'root',
 })
-export class InMemoryDataService implements InMemoryDbService {
-  consultantsService = new ConsultantsService();
-  startupsService = new StartupsServiceService();
-  createDb() {
-    const consultants = this.consultantsService.list();
-    const startups = this.startupsService.list();
-    return { consultants,startups };
-  }
+export class InMemoryDataService {
+  // consultantsService = new ConsultantsService();
+  // startupsService = new StartupsServiceService();
+  // createDb() {
+  //   const consultants = this.consultantsService.list();
+  //   const startups = this.startupsService.list();
+  //   return { consultants,startups };
+  // }
 
 }

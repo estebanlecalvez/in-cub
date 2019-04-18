@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 // Service
 import { ConsultantsService } from '../consultants.service'
@@ -9,7 +9,9 @@ import { ConsultantsService } from '../consultants.service'
   styleUrls: ['./consultant-list.component.css']
 })
 export class ConsultantListComponent implements OnInit {
-
+  @Input() idConsultant:number;
+  showModifForm;
+  showAddForm =false;
   consultants = [];
 
   constructor(private consultantService: ConsultantsService) { }
@@ -25,4 +27,14 @@ export class ConsultantListComponent implements OnInit {
   update(consultantToUpdate){
     this.consultantService.update(consultantToUpdate);
   }
+
+  showModificationForm(idConsultant){
+    this.showModifForm = !this.showModifForm;
+    this.idConsultant = idConsultant;
+  }
+
+  showAddingForm(){
+    this.showAddForm = !this.showAddForm;
+  }
+
 }

@@ -36,7 +36,7 @@ public class StartupResource {
     }
   }
 
-  // POST - http://localhost:8095/startup/all
+  // POST - http://localhost:8095/startup/add
   //  With body
   /*
     {
