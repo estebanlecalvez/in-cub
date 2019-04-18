@@ -13,9 +13,12 @@ export class StartupListComponent implements OnInit {
   showModifForm;
   showAddForm;
   id;
-  startups;
+  public isLoaded;
+  public startups;
 
-  constructor(private startupService: StartupsServiceService) { }
+  constructor(private startupService: StartupsServiceService) {
+    
+   }
 
   showModificationForm(idStartup){
     this.showModifForm = !this.showModifForm;
@@ -27,13 +30,16 @@ export class StartupListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.startups = this.startupService.list();
-    this.startups = this.startupService.list();
-    this.startups = this.startupService.list();
-    this.startups = this.startupService.list();
-    this.startups = this.startupService.list();
-    this.startups = this.startupService.list();
-    console.log(this.startups);
+    this.startups = this.startupService.getStartupList();
+  }
+
+  ngAfterViewChecked(): void {
+    //Called after every check of the component's view. Applies to components only.
+    //Add 'implements AfterViewChecked' to the class.
+    
+    if(this.startups != undefined){
+      this.isLoaded = true;
+    }
   }
 
   delete(startupToDelete){

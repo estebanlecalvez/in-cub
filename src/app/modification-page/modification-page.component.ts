@@ -30,8 +30,6 @@ export class ModificationPageComponent implements OnInit {
   ngOnInit() {
     // Get id param
     this.find(this.idStartup);
-
-
   }
 
   constructor( fb: FormBuilder, private startupService: StartupsServiceService) {
@@ -69,8 +67,6 @@ export class ModificationPageComponent implements OnInit {
 
     this.startupFind = this.startupService.findOne(id);
   }
-
-
 
   update() {
     let startup = [];

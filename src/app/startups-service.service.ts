@@ -40,18 +40,21 @@ export class StartupsServiceService {
   // }
   // ];
   api = "http://localhost:8095/startup";
-  apiStartups
+  apiStartups;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.list();
+   }
 
   ngOnInit() {
   }
 
   list() {
-    this.apiStartups = this.http.get(`${this.api}/all`,{
+    this.http.get(`${this.api}/all`,{
       observe:'body'
     }).subscribe((response => {
-        console.log(response);
+        console.log("Requête all", response);
+        this.apiStartups = response;
         return response;
       }));
   }
@@ -72,5 +75,14 @@ export class StartupsServiceService {
 
   findOne(id) {
     return this.http.get(`${this.api}/find/${id}`)
+  }
+
+  updateStartup(id, nom, secteur, representant, cofondateur, description, adresse){
+    console.log('id : ', id, 'nom : ', nom, 'secteur : ', secteur, 'representant : ', representant, 'cofondateur :', cofondateur, 'description : ',description, 'adresse : ', adresse);
+  }
+
+  getStartupList(){
+    console.log("get all startup" , this.apiStartups)
+    return this.apiStartups;
   }
 }

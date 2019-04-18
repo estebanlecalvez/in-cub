@@ -13,20 +13,31 @@
       <th scope="col">Delete</th>
     </tr>
 
-    <tr *ngFor="let startup of startups;">
-      <td>{{startup.name}}</td>
-      <td>{{startup.secteur}}</td>
-      <td>{{startup.representant}}</td>
-      <td>{{startup.nbrCoFondateurs | CoFoundersPipe}}</td>
-      <td>{{startup.description}}</td>
-      <td>{{startup.adresse | AdressPipe}}</td>
-      <td>
-        <button class="btn btn-primary" (click)="showModificationForm(startup.id)">Modification</button>
-      </td>
-      <td>
-        <button class="btn btn-danger" (click)="delete(startup)">Delete</button>
-      </td>
-    </tr> 
+    <div *ngIf="isLoaded; else wait">
+
+      <tr *ngFor="let startup of startups">
+        <td>{{startup.name}}</td>
+        <td>{{startup.secteur}}</td>
+        <td>{{startup.representant}}</td>
+        <td>{{startup.nbrCoFondateurs | CoFoundersPipe}}</td>
+        <td>{{startup.description}}</td>
+        <td>{{startup.adresse | AdressPipe}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="showModificationForm(startup.id)">Modification</button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(startup)">Delete</button>
+        </td>
+      </tr>
+
+    </div>
+
+    <<ng-template #wait>
+      Loading ...
+    </ng-template>
+    
+
+
   </table>
   <app-modification-page *ngIf="showModifForm" idStartup="{{id}}"></app-modification-page>
 
