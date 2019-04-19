@@ -11,10 +11,10 @@ import { StartupsServiceService } from '../startups-service.service'
 })
 export class AddStartupComponent implements OnInit {
   error = '';
-  nomCtrl: FormControl;
+  nameCtrl: FormControl;
   secteurCtrl: FormControl;
   representantCtrl: FormControl;
-  cofondateurCtrl: FormControl;
+  nbrCoFondateursCtrl: FormControl;
   descriptionCtrl: FormControl;
   adresseCtrl: FormControl;
 
@@ -24,31 +24,21 @@ export class AddStartupComponent implements OnInit {
   }
 
   constructor(fb: FormBuilder, private startupService: StartupsServiceService) {
-    this.nomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
+    this.nameCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
     this.secteurCtrl = fb.control('', [Validators.required, Validators.maxLength(25)]);
     this.representantCtrl = fb.control('', [Validators.required, Validators.maxLength(15)]);
-    this.cofondateurCtrl = fb.control('', [Validators.required, Validators.pattern('[1-9]*')]);
+    this.nbrCoFondateursCtrl = fb.control('', [Validators.required, Validators.pattern('[1-9]*')]);
     this.descriptionCtrl = fb.control('', [Validators.required, Validators.maxLength(250)]);
     this.adresseCtrl = fb.control('');
 
     this.startupForm = fb.group({
-      nom: this.nomCtrl,
+      name: this.nameCtrl,
       secteur: this.secteurCtrl,
       representant: this.representantCtrl,
-      cofondateur: this.cofondateurCtrl,
+      nbrCoFondateurs: this.nbrCoFondateursCtrl,
       description: this.descriptionCtrl,
       adresse: this.adresseCtrl,
     });
-  }
-
-  //methods
-  reset() {
-    this.nomCtrl.setValue('');
-    this.secteurCtrl.setValue('');
-    this.representantCtrl.setValue('');
-    this.cofondateurCtrl.setValue('');
-    this.descriptionCtrl.setValue('');
-    this.adresseCtrl.setValue('');
   }
 
   register() {
