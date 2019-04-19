@@ -1,36 +1,39 @@
 package com.techprimers.mongodb.springbootmongodbexample.resource;
 
+import com.techprimers.mongodb.springbootmongodbexample.dto.StartupDto;
 import com.techprimers.mongodb.springbootmongodbexample.document.Startup;
-import com.techprimers.mongodb.springbootmongodbexample.repository.StartupRepository;
+import com.techprimers.mongodb.springbootmongodbexample.service.StartupService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/startup")
 public class StartupResource {
 
-  private StartupRepository startupRepository;
+  private StartupService startupService;
 
-  public StartupResource(StartupRepository startupRepository) {
-    this.startupRepository = startupRepository;
+
+  public StartupResource(StartupService startupService) {
+    this.startupService = startupService;
   }
 
   // http://localhost:8095/startup/all
   @GetMapping("/all")
   public List<Startup> getAllStartup(){
-    return startupRepository.findAll();
+    return startupService.findAll();
   }
 
   // http://localhost:8095/startup/find/0
-  @GetMapping("/find/{id}")
-  public ResponseEntity<Startup> findById( @PathVariable int id){
-    Startup startup = startupRepository.findOne(id);
+  @GetMapping("/find/{uuid}")
+  public ResponseEntity<Startup> findById( @PathVariable String uuid){
+    Startup startup = startupService.findByUuid(uuid);
 
     if(startup != null){
-      return new ResponseEntity<Startup>(startup, HttpStatus.OK);
+      return new ResponseEntity<>(startup, HttpStatus.OK);
     }else{
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -49,8 +52,8 @@ public class StartupResource {
     }
   */
   @PostMapping("/add")
-  public Startup addStartup(@RequestBody Startup newStartup) {
-    return startupRepository.save(newStartup);
+  public Startup addStartup(@RequestBody StartupDto newStartup) {
+    return startupService.save(newStartup);
   }
 
   // PUT - http://localhost:8095/startup/update
@@ -67,29 +70,33 @@ public class StartupResource {
    */
   @PutMapping("/update")
   public ResponseEntity<Startup> updateStartup(@RequestBody Startup startupToUpdate){
-    Startup startupFind = startupRepository.findOne(startupToUpdate.getId());
+    Startup startupFind = startupService.findByUuid(startupToUpdate.getUuid());
+    StartupDto startupDto = new StartupDto();
 
     if(startupFind == null) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }else{
-      startupFind.setName(startupToUpdate.getName());
-      startupFind.setSecteur(startupToUpdate.getSecteur());
-      startupFind.setRepresentant(startupToUpdate.getRepresentant());
-      startupFind.setNbrCoFondateurs(startupToUpdate.getNbrCoFondateurs());
-      startupFind.setDescription(startupToUpdate.getDescription());
-      startupFind.setAdresse(startupToUpdate.getAdresse());
+      startupDto.setName(startupToUpdate.getName());
+      startupDto.setSecteur(startupToUpdate.getSecteur());
+      startupDto.setRepresentant(startupToUpdate.getRepresentant());
+      startupDto.setNbrCoFondateurs(startupToUpdate.getNbrCoFondateurs());
+      startupDto.setDescription(startupToUpdate.getDescription());
+      startupDto.setAdresse(startupToUpdate.getAdresse());
 
-      startupRepository.delete(startupFind.getId());
-      startupRepository.save(startupFind);
+      startupService.delete(startupFind.getUuid());
+      startupService.save(startupDto);
 
-      return new ResponseEntity<>(startupFind, HttpStatus.ACCEPTED);
+      return new ResponseEntity<>(startupFind, HttpStatus.OK);
     }
   }
 
   // DELETE - http://localhost:8095/startup/delete/0
-  @DeleteMapping("/delete/{id}")
-  public ResponseEntity deleteOne(@PathVariable int id){
-    startupRepository.delete(id);
-    return new ResponseEntity(HttpStatus.OK);
+  @DeleteMapping("/delete/{uuid}")
+  public ResponseEntity deleteOne(@PathVariable String uuid){
+    if(startupService.delete(uuid)){
+      return new ResponseEntity(HttpStatus.OK);
+    }else{
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
   }
 }
