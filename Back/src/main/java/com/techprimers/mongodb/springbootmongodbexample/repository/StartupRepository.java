@@ -4,4 +4,6 @@ import com.techprimers.mongodb.springbootmongodbexample.document.Startup;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface StartupRepository extends MongoRepository<Startup, Integer> {
+  Startup findByUuid(String uuid);
+  boolean deleteByUuid(String uuid);
 }
