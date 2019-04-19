@@ -3,6 +3,7 @@ package com.techprimers.mongodb.springbootmongodbexample.resource;
 import com.techprimers.mongodb.springbootmongodbexample.dto.StartupDto;
 import com.techprimers.mongodb.springbootmongodbexample.document.Startup;
 import com.techprimers.mongodb.springbootmongodbexample.service.StartupService;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class StartupResource {
     return startupService.findAll();
   }
 
-  // http://localhost:8095/startup/find/0
+  // http://localhost:8095/startup/find/d5d191f5-d445-4727-8d27-ab9ac17c03ae
   @GetMapping("/find/{uuid}")
   public ResponseEntity<Startup> findById( @PathVariable String uuid){
     Startup startup = startupService.findByUuid(uuid);
@@ -59,7 +60,7 @@ public class StartupResource {
   // PUT - http://localhost:8095/startup/update
   /*
     {
-      "id": 0,
+      "uuid": "d5d191f5-d445-4727-8d27-ab9ac17c03ae",
       "name": "Test update",
       "secteur": "Informatique",
       "representant": "Le Calvez Kévin",
@@ -90,13 +91,17 @@ public class StartupResource {
     }
   }
 
-  // DELETE - http://localhost:8095/startup/delete/0
+  // DELETE - http://localhost:8095/startup/delete/d5d191f5-d445-4727-8d27-ab9ac17c03ae
   @DeleteMapping("/delete/{uuid}")
   public ResponseEntity deleteOne(@PathVariable String uuid){
-    if(startupService.delete(uuid)){
+    Startup startup = startupService.findByUuid(uuid);
+
+    if(startup != null){
+      startupService.delete(uuid);
       return new ResponseEntity(HttpStatus.OK);
     }else{
       return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
+
   }
 }

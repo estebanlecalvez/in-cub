@@ -48,8 +48,8 @@ public class StartupService {
     return this.startupRepository.save(startup);
   }
 
-  public boolean delete(String uuid){
-    return this.startupRepository.deleteByUuid(uuid);
+  public void delete(String uuid){
+    this.startupRepository.deleteByUuid(uuid);
   }
 
 }

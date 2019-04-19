@@ -1,24 +1,16 @@
-package com.techprimers.mongodb.springbootmongodbexample.document;
+package com.techprimers.mongodb.springbootmongodbexample.dto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+public class ConsultantDto {
 
-@Document
-public class Consultant {
-
-  // Un consultant doit fournir un
-  //nom, un prénom, et une description(tous obligatoires).
-
-  @Id
   private String uuid;
   private String nom;
   private String prenom;
   private String description;
 
-  public Consultant() {
+  public ConsultantDto() {
   }
 
-  public Consultant(String uuid, String nom, String prenom, String description) {
+  public ConsultantDto(String uuid, String nom, String prenom, String description) {
     this.uuid = uuid;
     this.nom = nom;
     this.prenom = prenom;

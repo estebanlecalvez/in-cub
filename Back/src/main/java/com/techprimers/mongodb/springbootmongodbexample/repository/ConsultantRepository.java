@@ -4,4 +4,6 @@ import com.techprimers.mongodb.springbootmongodbexample.document.Consultant;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ConsultantRepository extends MongoRepository<Consultant, Integer> {
+  Consultant findByUuid(String uuid);
+  void deleteByUuid(String uuid);
 }
