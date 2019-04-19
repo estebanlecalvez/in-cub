@@ -1,5 +1,5 @@
 export class Startup {
-    id: number;
+    _id: number;
     name: string;
     secteur: string;
     representant: string;
@@ -8,8 +8,8 @@ export class Startup {
     adresse?: string;
     consultant?: Consultant
 
-    constructor(id: number, name: string, secteur: string, representant: string, nbrCoFondateurs: number, description: string, adresse?: string, consultant?: Consultant) {
-        this.id = id;
+    constructor(_id: number, name: string, secteur: string, representant: string, nbrCoFondateurs: number, description: string, adresse?: string, consultant?: Consultant) {
+        this._id = _id;
         this.name = name;
         this.secteur = secteur;
         this.representant = representant;
@@ -20,13 +20,13 @@ export class Startup {
 }
 
 export class Consultant {
-    id: number;
+    _id: number;
     name: string;
     lastName: string;
     description: string;
 
-    constructor(id: number, name: string, lastName: string, description: string){
-        this.id = id;
+    constructor(_id: number, name: string, lastName: string, description: string){
+        this._id = _id;
         this.name = name;
         this.lastName =lastName;
         this.description = description;

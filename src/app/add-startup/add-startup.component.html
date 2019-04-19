@@ -10,12 +10,12 @@
                   <span class="input-group-text" id="basic-addon1">
                      <img src="../../assets/account.svg" alt="Nom">
                   </span>
-                  <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
+                  <input type="text" autocomplete="off" id="name" formControlName="name" placeholder="Nom">
                </div>
-               <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('required')">
+               <div class="errors" *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">
                   <p>Le champ est obligatoire</p>
                </div>
-               <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('maxlength')">
+               <div class="errors" *ngIf="nameCtrl.dirty && nameCtrl.hasError('maxlength')">
                   <p>Le ne peut pas comporter plus de 20 caractères</p>
                </div>
    
@@ -59,10 +59,10 @@
                   <span class="input-group-text" id="basic-addon1">
                      <img src="../../assets/supervisor.svg" alt="Co-fondateur">
                   </span>
-                  <input type="number" autocomplete="off" id="cofondateur" formControlName="cofondateur"
+                  <input type="number" autocomplete="off" id="nbrCoFondateurs" formControlName="nbrCoFondateurs"
                      placeholder="Nombre de co-fondateurs">
                </div>
-               <div class="errors" *ngIf="cofondateurCtrl.dirty && cofondateurCtrl.hasError('required')">
+               <div class="errors" *ngIf="nbrCoFondateursCtrl.dirty && nbrCoFondateursCtrl.hasError('required')">
                   <p>Le champ est obligatoire et doit être un nombre</p>
                </div>
    

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // Service
 import { StartupsServiceService } from '../startups-service.service'
 import { Observable } from 'rxjs';
+import { Startup } from '../objects';
 
 @Component({
   selector: 'app-startup-list',
@@ -14,39 +15,34 @@ export class StartupListComponent implements OnInit {
   showAddForm;
   id;
   public isLoaded;
-  public startups;
+  startups;
 
   constructor(private startupService: StartupsServiceService) {
-    
-   }
+  }
 
-  showModificationForm(idStartup){
+  showModificationForm(idStartup) {
     this.showModifForm = !this.showModifForm;
     this.id = idStartup;
   }
 
-  showAddingForm(){
+  showAddingForm() {
     this.showAddForm = !this.showAddForm;
   }
 
   ngOnInit() {
-    this.startups = this.startupService.getStartupList();
+    this.startups = this.startupService.list();
   }
 
-  ngAfterViewChecked(): void {
-    //Called after every check of the component's view. Applies to components only.
-    //Add 'implements AfterViewChecked' to the class.
-    
-    if(this.startups != undefined){
-      this.isLoaded = true;
-    }
+  ngOnChanges(){
+    this.startups = this.startupService.list();
+    console.log("change on page");
   }
 
-  delete(startupToDelete){
+  delete(startupToDelete) {
     this.startupService.deleteStartup(startupToDelete);
   }
 
-  update(startupToUpdate){
+  update(startupToUpdate) {
     this.startupService.update(startupToUpdate);
   }
 }

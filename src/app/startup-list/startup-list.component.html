@@ -13,9 +13,9 @@
       <th scope="col">Delete</th>
     </tr>
 
-    <div *ngIf="isLoaded; else wait">
+    <!-- <div *ngIf="isLoaded; else wait"> -->
 
-      <tr *ngFor="let startup of startups">
+      <tr *ngFor="let startup of startups | async">
         <td>{{startup.name}}</td>
         <td>{{startup.secteur}}</td>
         <td>{{startup.representant}}</td>
@@ -30,11 +30,11 @@
         </td>
       </tr>
 
-    </div>
+    <!-- </div>
 
     <<ng-template #wait>
       Loading ...
-    </ng-template>
+    </ng-template> -->
     
 
 
