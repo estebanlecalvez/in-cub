@@ -1,5 +1,6 @@
 <div class="container">
   <button class="btn btn-success" (click)="showAddingForm()">Add Startup</button>
+  <button class="btn btn-success" (click)="refresh()">Refresh</button>
   <app-add-startup *ngIf="showAddForm"></app-add-startup>
   <table class="table table-striped table-primary" id="listStartup">
     <tr>
@@ -15,7 +16,7 @@
 
     <!-- <div *ngIf="isLoaded; else wait"> -->
 
-      <tr *ngFor="let startup of startups | async">
+      <tr *ngFor="let startup of startups">
         <td>{{startup.name}}</td>
         <td>{{startup.secteur}}</td>
         <td>{{startup.representant}}</td>
@@ -36,8 +37,6 @@
       Loading ...
     </ng-template> -->
     
-
-
   </table>
   <app-modification-page *ngIf="showModifForm" idStartup="{{id}}"></app-modification-page>
 

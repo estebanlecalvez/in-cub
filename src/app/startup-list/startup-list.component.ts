@@ -30,7 +30,7 @@ export class StartupListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.startups = this.startupService.list();
+    this.startups = this.startupService.getStartups();
   }
 
   // ngOnChanges() {
@@ -40,6 +40,10 @@ export class StartupListComponent implements OnInit {
   delete(startupId) {
     console.log("Delete in startup-list : ", startupId);
     this.startupService.deleteStartup(startupId);
+  }
+
+  refresh(){
+   this.startupService.refresh(); 
   }
 
   update(startupToUpdate) {
