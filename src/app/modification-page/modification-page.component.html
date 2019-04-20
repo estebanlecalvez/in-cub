@@ -1,21 +1,20 @@
 <div class="container">
    <div class="card text-white bg-white mb-3 box shadow" >
       <div class="card-header" style="    color:#25007a;">
-         <h5>Update startup {{startupFind.nom}}</h5>
+         <h5>Modify startup {{startupFind.name |async}}</h5>
       </div>
       <form [formGroup]="startupForm">
          <div class="card-body">
-
             <div class="input-group-prepend">
                <span class="input-group-text" id="basic-addon1">
                   <img src="../../assets/account.svg" alt="Nom">
                </span>
-               <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="{{startupFind.nom}}">
+               <input type="text" autocomplete="off" id="name" formControlName="name" placeholder="Nom">
             </div>
-            <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('required')">
+            <div class="errors" *ngIf="nameCtrl.dirty && nameCtrl.hasError('required')">
                <p>Le champ est obligatoire</p>
             </div>
-            <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('maxlength')">
+            <div class="errors" *ngIf="nameCtrl.dirty && nameCtrl.hasError('maxlength')">
                <p>Le ne peut pas comporter plus de 20 caractères</p>
             </div>
 
@@ -26,7 +25,7 @@
                   <img src="../../assets/map.svg" alt="Secteur">
                </span>
                <input type="text" autocomplete="off" id="secteur" formControlName="secteur"
-                  placeholder="{{startupFind.secteur}}">
+                  placeholder="Secteur d'activité">
             </div>
             <div class="errors" *ngIf="secteurCtrl.dirty && secteurCtrl.hasError('required')">
                <p>Le champ est obligatoire</p>
@@ -43,7 +42,7 @@
                   <img src="../../assets/face.svg" alt="Représentant">
                </span>
                <input type="text" autocomplete="off" id="representant" formControlName="representant"
-                  placeholder="{{startupFind.representant}}">
+                  placeholder="Représentant">
             </div>
             <div class="errors" *ngIf="representantCtrl.dirty && representantCtrl.hasError('required')">
                <p>Le champ est obligatoire</p>
@@ -59,10 +58,10 @@
                <span class="input-group-text" id="basic-addon1">
                   <img src="../../assets/supervisor.svg" alt="Co-fondateur">
                </span>
-               <input type="number" autocomplete="off" id="cofondateur" formControlName="cofondateur"
-                  placeholder="{{startupFind.cofondateur}}">
+               <input type="number" autocomplete="off" id="nbrCoFondateurs" formControlName="nbrCoFondateurs"
+                  placeholder="Nombre de co-fondateurs">
             </div>
-            <div class="errors" *ngIf="cofondateurCtrl.dirty && cofondateurCtrl.hasError('required')">
+            <div class="errors" *ngIf="nbrCoFondateursCtrl.dirty && nbrCoFondateursCtrl.hasError('required')">
                <p>Le champ est obligatoire et doit être un nombre</p>
             </div>
 
@@ -71,7 +70,7 @@
                   <img src="../../assets/place.svg" alt="Adresse">
                </span>
                <input type="mail" autocomplete="off" id="adresse" formControlName="adresse"
-                  placeholder="{{startupFind.adresse}}">
+                  placeholder="Adresse">
             </div>
 
             <div class="input-group-prepend">
@@ -79,7 +78,7 @@
                   <img src="../../assets/create.svg" alt="Description">
                </span>
                <textarea name="message" class="form-control" rows="3" id="description" formControlName="description"
-                  placeholder="{{startupFind.description}}"></textarea>
+                  placeholder="Description"></textarea>
             </div>
             <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('required')">
                <p>Le champ est obligatoire</p>
@@ -87,7 +86,7 @@
             <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('maxlength')">
                <p>Le champ ne peut pas contenir plus de 250 caractères</p>
             </div>
-            <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="update()" >Update</button>
+            <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="register()">Add</button>
          </div>
 
       </form>
