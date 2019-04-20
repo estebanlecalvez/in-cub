@@ -52,7 +52,6 @@ export class StartupsServiceService implements OnInit {
         () => {
 
         });
-        this.list();
   }
 
 
