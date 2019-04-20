@@ -39,7 +39,4 @@ export class StartupListComponent implements OnInit {
     window.location.reload();
   }
 
-  update(startupToUpdate) {
-    this.startupService.update(startupToUpdate);
-  }
 }

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 
 // Service
 import { StartupsServiceService } from '../startups-service.service';
-import { find } from 'rxjs/operators';
 
 // Get param in url
 
@@ -18,10 +17,10 @@ export class ModificationPageComponent implements OnInit {
   startupFind;
   idFind;
 
-  nomCtrl: FormControl;
+  nameCtrl: FormControl;
   secteurCtrl: FormControl;
   representantCtrl: FormControl;
-  cofondateurCtrl: FormControl;
+  nbrCoFondateursCtrl: FormControl;
   descriptionCtrl: FormControl;
   adresseCtrl: FormControl;
   idCtrl: FormControl;
@@ -33,31 +32,23 @@ export class ModificationPageComponent implements OnInit {
   }
 
   constructor( fb: FormBuilder, private startupService: StartupsServiceService) {
-    this.nomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
+    this.nameCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
     this.secteurCtrl = fb.control('', [Validators.required, Validators.maxLength(25)]);
     this.representantCtrl = fb.control('', [Validators.required, Validators.maxLength(15)]);
-    this.cofondateurCtrl = fb.control('', [Validators.required, Validators.pattern('[1-9]*')]);
+    this.nbrCoFondateursCtrl = fb.control('', [Validators.required, Validators.pattern('[1-9]*')]);
     this.descriptionCtrl = fb.control('', [Validators.required, Validators.maxLength(250)]);
     this.adresseCtrl = fb.control('');
 
     this.startupForm = fb.group({
-      nom: this.nomCtrl,
+      name: this.nameCtrl,
       secteur: this.secteurCtrl,
       representant: this.representantCtrl,
-      cofondateur: this.cofondateurCtrl,
+      nbrCoFondateurs: this.nbrCoFondateursCtrl,
       description: this.descriptionCtrl,
       adresse: this.adresseCtrl,
     });
   }
 
-  reset() {
-    this.nomCtrl.setValue('');
-    this.secteurCtrl.setValue('');
-    this.representantCtrl.setValue('');
-    this.cofondateurCtrl.setValue('');
-    this.descriptionCtrl.setValue('');
-    this.adresseCtrl.setValue('');
-  }
 
   // Get one stratup by id
   find() {
@@ -69,9 +60,8 @@ export class ModificationPageComponent implements OnInit {
   update() {
     const startup = [];
     startup.push(this.idStartup + this.startupForm.value);
-    this.startupService.update(this.idStartup, this.nomCtrl.value, this.secteurCtrl.value, this.representantCtrl.value,
-      this.cofondateurCtrl.value, this.descriptionCtrl.value, this.adresseCtrl.value);
+    this.startupService.update(this.idStartup, this.nameCtrl.value, this.secteurCtrl.value, this.representantCtrl.value,
+      this.nbrCoFondateursCtrl.value, this.descriptionCtrl.value, this.adresseCtrl.value);
   }
 }
- 
 

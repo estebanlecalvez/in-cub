@@ -1,7 +1,7 @@
 <div class="container">
-   <div class="card text-white bg-white mb-3 box shadow" >
+   <div class="card text-white bg-white mb-3 box shadow">
       <div class="card-header" style="    color:#25007a;">
-         <h5>Modify startup {{startupFind.name |async}}</h5>
+         <h5>Modify startup</h5>
       </div>
       <form [formGroup]="startupForm">
          <div class="card-body">
@@ -17,9 +17,6 @@
             <div class="errors" *ngIf="nameCtrl.dirty && nameCtrl.hasError('maxlength')">
                <p>Le ne peut pas comporter plus de 20 caractères</p>
             </div>
-
-
-
             <div class="input-group-prepend">
                <span class="input-group-text" id="basic-addon1">
                   <img src="../../assets/map.svg" alt="Secteur">
@@ -33,7 +30,6 @@
             <div class="errors" *ngIf="secteurCtrl.dirty && secteurCtrl.hasError('maxlength')">
                <p>Le ne peut pas comporter plus de 25 caractères</p>
             </div>
-
 
 
             <!-- requis 15 max -->
@@ -69,8 +65,7 @@
                <span class="input-group-text" id="basic-addon1">
                   <img src="../../assets/place.svg" alt="Adresse">
                </span>
-               <input type="mail" autocomplete="off" id="adresse" formControlName="adresse"
-                  placeholder="Adresse">
+               <input type="mail" autocomplete="off" id="adresse" formControlName="adresse" placeholder="Adresse">
             </div>
 
             <div class="input-group-prepend">
@@ -86,7 +81,7 @@
             <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('maxlength')">
                <p>Le champ ne peut pas contenir plus de 250 caractères</p>
             </div>
-            <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="register()">Add</button>
+            <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="update()">Update</button>
          </div>
 
       </form>
