@@ -40,10 +40,12 @@ export class StartupListComponent implements OnInit {
   delete(startupId) {
     console.log("Delete in startup-list : ", startupId);
     this.startupService.deleteStartup(startupId);
+    this.refresh();
   }
 
   refresh(){
-   this.startupService.refresh(); 
+    this.startupService.refresh();
+    this.startupService.getStartups();
   }
 
   update(startupToUpdate) {

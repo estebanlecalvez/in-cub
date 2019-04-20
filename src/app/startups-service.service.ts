@@ -13,32 +13,26 @@ export class StartupsServiceService implements OnInit {
 
   consultants = new ConsultantsService();
   api = "http://localhost:8095/startup";
-  private apiStartups: any[];
+  private apiStartups = [];
 
   constructor(private http: HttpClient) {
     this.list();
-   }
+  }
 
   ngOnInit() {
   }
 
   list() {
-    this.apiStartups = this.http.get(`${this.api}/all`).subscribe(
-      (val) => {
-        console.log('list() in stratups service', val);
-      });
+    this.http.get<any>(`${this.api}/all`).subscribe(
+      result => {
+        result.map( item => this.apiStartups.push(item));
+      }
+    )
   }
 
   refresh() {
     this.apiStartups = [];
-
-    this.http.get(`${this.api}/all`).pipe(
-      map(
-        (jsonArray: Object[]) => jsonArray.map(jsonItem => this.apiStartups.push(jsonItem))
-      )
-    );
-
-    console.log("apiStratups in stratups service", this.apiStartups);
+    this.list();
   }
 
   getStartups(){
@@ -79,8 +73,6 @@ export class StartupsServiceService implements OnInit {
       catchError(this.handleError)
     );
   }
-
- 
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
