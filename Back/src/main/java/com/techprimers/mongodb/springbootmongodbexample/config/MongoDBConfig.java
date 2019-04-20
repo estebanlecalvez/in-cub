@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -19,12 +20,12 @@ public class MongoDBConfig {
     @Bean
     CommandLineRunner commandLineRunner(StartupRepository startupRepository) {
         return strings -> {
-            Startup startup = startupRepository.findOne(0);
+            List<Startup> startups = startupRepository.findAll();
 
           UUID uuid = UUID.randomUUID();
           String randomUUIDString = uuid.toString();
 
-            if(startup == null){
+            if(startups.size() == 0){
               startupRepository.save(new Startup(randomUUIDString, "Infotel", "Informatique", "Le Calvez Kévin", 2, "Entreprise internationnale", "15 rue du malbilay 35000 Rennes"));
             }
         };

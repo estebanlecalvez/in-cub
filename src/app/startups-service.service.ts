@@ -16,27 +16,19 @@ export class StartupsServiceService implements OnInit {
   private apiStartups = [];
 
   constructor(private http: HttpClient) {
-    this.list();
   }
 
   ngOnInit() {
+    this.list();
   }
 
-  list() {
-    this.http.get<any>(`${this.api}/all`).subscribe(
+   async list() {
+    this.apiStartups = [];
+    await this.http.get<any>(`${this.api}/all`).subscribe(
       result => {
         result.map( item => this.apiStartups.push(item));
       }
-    )
-  }
-
-  refresh() {
-    this.apiStartups = [];
-    this.list();
-    return this.getStartups();
-  }
-
-  getStartups(){
+    );
     return this.apiStartups;
   }
 
@@ -52,14 +44,15 @@ export class StartupsServiceService implements OnInit {
     this.http.delete("http://localhost:8095/startup/delete/" + id)
       .subscribe(
         (val) => {
-          console.log("DELETE call successful value returned in body",val);
+          console.log("DELETE call successful value returned in body", val);
         },
         response => {
           console.log("DELETE call in error", response);
         },
         () => {
-          return this.refresh();
+
         });
+        this.list();
   }
 
 
