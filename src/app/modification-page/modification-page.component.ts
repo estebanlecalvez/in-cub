@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 
 // Service
 import { StartupsServiceService } from '../startups-service.service';
+import { find } from 'rxjs/operators';
 
 // Get param in url
 
@@ -28,7 +29,7 @@ export class ModificationPageComponent implements OnInit {
   startupForm: FormGroup;
   ngOnInit() {
     // Get id param
-    this.find(this.idStartup);
+    this.find();
   }
 
   constructor( fb: FormBuilder, private startupService: StartupsServiceService) {
@@ -58,21 +59,19 @@ export class ModificationPageComponent implements OnInit {
     this.adresseCtrl.setValue('');
   }
 
-
   // Get one stratup by id
-  find(id) {
+  find() {
     console.log('Startup id : ' + this.idStartup);
-
-    this.startupFind = this.startupService.findOne(id);
+    this.startupFind = this.startupService.findOne(this.idStartup);
+    console.log(this.startupFind)
   }
 
   update() {
     const startup = [];
-    startup.push(this.idFind + this.startupForm.value);
-    console.log(startup);
-    this.startupService.update(this.startupForm.value);
+    startup.push(this.idStartup + this.startupForm.value);
+    this.startupService.update(this.idStartup, this.nomCtrl.value, this.secteurCtrl.value, this.representantCtrl.value,
+      this.cofondateurCtrl.value, this.descriptionCtrl.value, this.adresseCtrl.value);
   }
-
 }
-
+ 
 
