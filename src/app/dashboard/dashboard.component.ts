@@ -10,15 +10,16 @@ import { ConsultantsService } from '../consultants.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {  
+export class DashboardComponent implements OnInit {
   startups;
   consultants;
-  constructor(fb: FormBuilder, private startupService: StartupsServiceService,private consultantService:ConsultantsService) {
+  constructor(fb: FormBuilder, private startupService: StartupsServiceService, private consultantService: ConsultantsService) {
   }
 
   ngOnInit() {
     this.startups = this.startupService.list();
     this.consultants = this.consultantService.list();
+    console.log(this.consultants);
   }
 
 }

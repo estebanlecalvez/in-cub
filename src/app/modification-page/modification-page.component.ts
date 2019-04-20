@@ -2,10 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 // Service
-import { StartupsServiceService } from '../startups-service.service'
+import { StartupsServiceService } from '../startups-service.service';
 
 // Get param in url
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-modification-page',
@@ -50,7 +49,6 @@ export class ModificationPageComponent implements OnInit {
     });
   }
 
-  //methods
   reset() {
     this.nomCtrl.setValue('');
     this.secteurCtrl.setValue('');
@@ -63,13 +61,13 @@ export class ModificationPageComponent implements OnInit {
 
   // Get one stratup by id
   find(id) {
-    console.log("Startup id" + this.idStartup);
+    console.log('Startup id : ' + this.idStartup);
 
     this.startupFind = this.startupService.findOne(id);
   }
 
   update() {
-    let startup = [];
+    const startup = [];
     startup.push(this.idFind + this.startupForm.value);
     console.log(startup);
     this.startupService.update(this.startupForm.value);

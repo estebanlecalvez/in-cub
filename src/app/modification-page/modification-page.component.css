@@ -21,6 +21,16 @@ form {
     border-radius: 20px;
 }
 
+.card-header {
+    color: #25007a;
+    text-align: center;
+}
+.btn {
+    display: block;
+    max-width: 300px;
+    margin: auto;
+}
+
 input{
     min-width: 300px;
     max-width: 300px;

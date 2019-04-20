@@ -3,7 +3,7 @@
        <div class="card-header" style="    color:#25007a;">
           <h5>Update consultant {{consultantFind.nom}}</h5>
        </div>
-       <form [formGroup]="startupForm">
+       <form [formGroup]="consultantForm">
           <div class="card-body">
  
              <div class="input-group-prepend">
@@ -28,10 +28,10 @@
                 <input type="text" autocomplete="off" id="prenom" formControlName="prenom"
                    placeholder="{{consultantFind.prenom}}">
              </div>
-             <div class="errors" *ngIf="prenom.dirty && prenom.hasError('required')">
+             <div class="errors" *ngIf="prenomCtrl.dirty && prenomCtrl.hasError('required')">
                 <p>Le champ est obligatoire</p>
              </div>
-             <div class="errors" *ngIf="prenom.dirty && prenom.hasError('maxlength')">
+             <div class="errors" *ngIf="prenomCtrl.dirty && prenomCtrl.hasError('maxlength')">
                 <p>Le champ ne peut pas contenir plus de 15 caractères</p>
              </div>  
  

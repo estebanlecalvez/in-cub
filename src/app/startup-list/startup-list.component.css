@@ -1,22 +1,7 @@
-table, th, tr, td {
-    border: 1px solid black;
-    align-content: center;
-}
 
-.table{
-    color:white;
-    background: #25007a;
+.btn{
+    margin-bottom:10px;
 }
-tr:nth-child(2n+1){
-    background:#3600b3;
-    color:WHITE;
-}
-
-tr:not(:first-child):hover{
-    background: #200069;
-
-}
-
 form {
     float: left;
     display:flex;
@@ -36,11 +21,5 @@ form {
     justify-content: center;
     align-items: center;
     padding: 30px;
-    /* background: #25007a; */
     border-radius: 20px;
 }
-
-/* .container:hover{
-    background: #2b0091;
-    color:white;
-} */
