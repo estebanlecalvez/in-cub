@@ -74,7 +74,7 @@ export class StartupsServiceService implements OnInit {
       adresse: adresse
      }).subscribe(
       (result) => console.log("result", result),
-      (response) => console.log("DELETE call in error", response),
+      (response) => console.log("DELETE call ", response),
       () => console.log("startup ajoutée")
     );
   }

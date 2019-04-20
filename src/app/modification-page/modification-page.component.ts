@@ -62,6 +62,7 @@ export class ModificationPageComponent implements OnInit {
     startup.push(this.idStartup + this.startupForm.value);
     this.startupService.update(this.idStartup, this.nameCtrl.value, this.secteurCtrl.value, this.representantCtrl.value,
       this.nbrCoFondateursCtrl.value, this.descriptionCtrl.value, this.adresseCtrl.value);
+      window.location.reload();
   }
 }
 
