@@ -1,20 +1,56 @@
-<form [formGroup]="consultantForm">
-   <div class="container">
-      <h2>Add new consultant</h2>
-
-      <div>
-         <!-- Requis 20 max -->
-
+<div class="container">
+   <div class="card text-white bg-white mb-3 box shadow" >
+      <div class="card-header" style="    color:#25007a;">
+         <h5>Add consultant</h5>
       </div>
-      <div class="input-group-prepend">
-         <span class="input-group-text" id="basic-addon1">
-            <img src="../../assets/face.svg" alt="Username">
-         </span>
-         <input type="text" autocomplete="off" id="nomConsultant" formControlName="nomConsultant"
-            placeholder="Nom du consultant"> </div>
-      <div>
-         
-         <button class="btn btn-success" (click)="register()" routerLink="/dashboard">Add Consultant</button>
-      </div>
+      <form [formGroup]="consultantForm">
+         <div class="card-body">
+
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1">
+                  <img src="../../assets/account.svg" alt="Nom">
+               </span>
+               <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
+            </div>
+            <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('required')">
+               <p>Le champ est obligatoire</p>
+            </div>
+            <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('maxlength')">
+               <p>Le ne peut pas comporter plus de 20 caractères</p>
+            </div>
+
+
+            <!-- requis 15 max -->
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1">
+                  <img src="../../assets/face.svg" alt="Représentant">
+               </span>
+               <input type="text" autocomplete="off" id="prenom" formControlName="prenom"
+                  placeholder="Prenom">
+            </div>
+            <div class="errors" *ngIf="prenomCtrl.dirty && prenomCtrl.hasError('required')">
+               <p>Le champ est obligatoire</p>
+            </div>
+            <div class="errors" *ngIf="prenomCtrl.dirty && prenomCtrl.hasError('maxlength')">
+               <p>Le champ ne peut pas contenir plus de 15 caractères</p>
+            </div>  
+
+            <div class="input-group-prepend">
+               <span class="input-group-text" id="basic-addon1">
+                  <img src="../../assets/create.svg" alt="Description">
+               </span>
+               <textarea name="message" class="form-control" rows="3" id="description" formControlName="description"
+                  placeholder="Description"></textarea>
+            </div>
+            <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('required')">
+               <p>Le champ est obligatoire</p>
+            </div>
+            <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('maxlength')">
+               <p>Le champ ne peut pas contenir plus de 250 caractères</p>
+            </div>
+            <button class="btn btn-success" [disabled]="consultantForm.invalid" (click)="add()">Add</button>
+         </div>
+
+      </form>
    </div>
-</form>
+</div>

@@ -8,35 +8,32 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
   styleUrls: ['./modify-consultant.component.css']
 })
 export class ModifyConsultantComponent implements OnInit {
-  @Input() idConsultant:number;
+  @Input() idConsultant: number;
   nomCtrl: FormControl;
   prenomCtrl: FormControl;
   descriptionCtrl: FormControl;
-  startupForm: FormGroup;
+  consultantForm: FormGroup;
 
 
   consultantFind;
-  constructor( fb: FormBuilder, private consultantService : ConsultantsService) {
+  constructor(fb: FormBuilder, private consultantService: ConsultantsService) {
     this.nomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
     this.prenomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
     this.descriptionCtrl = fb.control('', [Validators.required, Validators.maxLength(250)]);
 
-    this.startupForm = fb.group({
+    this.consultantForm = fb.group({
       nom: this.nomCtrl,
-      prenom : this.prenomCtrl,
+      prenom: this.prenomCtrl,
       description: this.descriptionCtrl,
     });
-   }
+  }
 
   ngOnInit() {
   }
 
   // Get one stratup by id
   find(id) {
-    console.log("Startup id" + this.idConsultant);
+    console.log('Startup id' + this.idConsultant);
     this.consultantFind = this.consultantService.findOne(id);
   }
-
-
-  
 }

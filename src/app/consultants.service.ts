@@ -7,21 +7,21 @@ export class ConsultantsService {
   consultants = [
     {
       id: 1,
-      nom: "Durand",
-      prenom:"Jean-Yves",
-      description:"Consultant senior."
-    },    
+      nom: 'Durand',
+      prenom: 'Jean-Yves',
+      description: 'Consultant senior.'
+    },
     {
       id: 2,
-      nom:"Lafondue",
-      prenom:"Pierre",
-      description:"Consultant junior."
+      nom: 'Lafondue',
+      prenom: 'Pierre',
+      description: 'Consultant junior.'
     },
     {
       id: 3,
-      nom:"Ranou",
-      prenom:"Monique",
-      description:"Consultante senior."
+      nom: 'Ranou',
+      prenom: 'Monique',
+      description: 'Consultante senior.'
     },
   ];
 
@@ -29,22 +29,24 @@ export class ConsultantsService {
 
   add(consultant) {
     this.consultants.push(consultant);
-    console.log("Successfully added consultant : " + consultant);
+    console.log('Successfully added consultant : ' + consultant);
   }
 
   delete(consultant) {
-    this.consultants.forEach( (consultantInList, index) => {
-      if(consultantInList === consultant) this.consultants.splice(index,1);
+    this.consultants.forEach((consultantInList, index) => {
+      if (consultantInList === consultant) {
+        this.consultants.splice(index, 1);
+      }
     });
-    console.log("Successfully deleted consultant : " + consultant);
+    console.log('Successfully deleted consultant : ' + consultant.nom);
   }
 
   findOne(id) {
     let consultant;
     this.consultants.forEach(consultantFind => {
-      if (consultantFind.id == id){
+      if (consultantFind.id === id) {
         consultant = consultantFind;
-      } 
+      }
     });
     console.log(consultant);
     return consultant;

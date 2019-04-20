@@ -1,21 +1,6 @@
-table, th, tr, td {
-    border: 1px solid black;
-    align-content: center;
+.btn{
+    margin-bottom:10px;
 }
-
-.table{
-    color:white;
-    background: #25007a;
-}
-tr:nth-child(2n+1){
-    background:#3600b3;
-    color:WHITE;
-}
-
-tr:not(:first-child):hover{
-    background: #200069;
-}
-
 form {
     float: left;
     display:flex;

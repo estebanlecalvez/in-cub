@@ -11,31 +11,30 @@ import { ConsultantsService } from '../consultants.service';
 })
 export class AddConsultantComponent implements OnInit {
   error = '';
-  idConsultant;
-  nomConsultantCtrl: FormControl;
-
-
+  nomCtrl: FormControl;
+  prenomCtrl: FormControl;
+  descriptionCtrl: FormControl;
   consultantForm: FormGroup;
-  
-  constructor(fb: FormBuilder, private consultantService: ConsultantsService) {
-    this.nomConsultantCtrl = fb.control('');
 
+
+  consultantFind;
+  constructor(fb: FormBuilder, private consultantService: ConsultantsService) {
+    this.nomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
+    this.prenomCtrl = fb.control('', [Validators.required, Validators.maxLength(20)]);
+    this.descriptionCtrl = fb.control('', [Validators.required, Validators.maxLength(250)]);
 
     this.consultantForm = fb.group({
-      nomConsultant: this.nomConsultantCtrl,
+      nom: this.nomCtrl,
+      prenom: this.prenomCtrl,
+      description: this.descriptionCtrl,
     });
   }
 
-  ngOnInit(){
-    
+  ngOnInit() {
   }
 
-  //methods
-  reset() {
-    this.nomConsultantCtrl.setValue('');
+  add() {
+
   }
 
-  register() {
-    this.consultantService.add(this.consultantForm.value)
-  }
 }

@@ -1,17 +1,32 @@
-<form (submit)="loginUser($event)">
-  <div class="container">
-    <h2>Register</h2>
-    <div>
-      <input type="text" autocomplete="off" placeholder="Username" id="username">
+<div class="container">
+  <div class="card text-white bg-white mb-3 box shadow">
+    <div class="card-header">
+      <h5>Register</h5>
     </div>
-    <div>
-      <input type="password" autocomplete="off" placeholder="Password" id="password">
-    </div>
-    <div>
-      <input type="password" autocomplete="off" placeholder="Confirm Password" id="confirmPassword">
-    </div>
-    <div>
-      <button type="submit" id="submit" class="btn btn-success">Submit</button>
-    </div>
+    <form>
+      <div class="card-body">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/account.svg" alt="Nom">
+          </span>
+          <input type="text" autocomplete="off" id="username " placeholder="Username">
+        </div>
+
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/map.svg" alt="Secteur">
+          </span>
+          <input type="password" autocomplete="off" id="password" placeholder="Password">
+        </div>
+
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">
+            <img src="../../assets/map.svg" alt="Secteur">
+          </span>
+          <input type="password" autocomplete="off" id="confirmpassword" placeholder="Confirm Password">
+        </div>     
+      <button class="btn btn-success" (click)="login()">Register</button>
   </div>
-</form>
+  </form>
+</div>
+</div>

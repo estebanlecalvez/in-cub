@@ -1,6 +1,6 @@
 <div class="container">
    <div class="row">
-      <div class="col" *ngFor="let startup of startups">
+      <div class="col" *ngFor="let startup of startups | async">
          <div class="card text-white bg-info mb-3 box shadow" style="max-width: 18rem;">
             <div class="card-header">
                <h5>{{startup.nom}}</h5>

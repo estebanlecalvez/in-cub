@@ -1,0 +1,55 @@
+form {
+    float: left;
+    display:flex;
+    position:initial;
+    width:100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.container{
+    display: flex;
+    color:#25007a;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    /* background: #25007a; */
+    border-radius: 20px;
+}
+
+.card-header {
+    color: #25007a;
+    text-align: center;
+}
+.btn {
+    display: block;
+    max-width: 300px;
+    margin: auto;
+}
+
+input{
+    min-width: 300px;
+    max-width: 300px;
+    border-radius:0 10px 10px 0;
+}
+
+textarea{
+    min-width: 300px;
+    max-width: 300px;
+    border-radius:0 10px 10px 0;
+}
+
+.input-group-prepend{
+    margin:10px;
+}
+
+
+
+ div .errors {
+    font-weight: bold;
+    color: rgb(235, 199, 0);
+ }
