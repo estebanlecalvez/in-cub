@@ -1,7 +1,11 @@
 package com.techprimers.mongodb.springbootmongodbexample.config;
 
 import com.techprimers.mongodb.springbootmongodbexample.document.Startup;
+import com.techprimers.mongodb.springbootmongodbexample.dto.ConsultantDto;
+import com.techprimers.mongodb.springbootmongodbexample.dto.StartupDto;
 import com.techprimers.mongodb.springbootmongodbexample.repository.StartupRepository;
+import com.techprimers.mongodb.springbootmongodbexample.service.ConsultantService;
+import com.techprimers.mongodb.springbootmongodbexample.service.StartupService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,16 +22,15 @@ import java.util.UUID;
 @Configuration
 public class MongoDBConfig {
     @Bean
-    CommandLineRunner commandLineRunner(StartupRepository startupRepository) {
+    CommandLineRunner commandLineRunner(StartupService startupService, ConsultantService consultantService) {
         return strings -> {
-            List<Startup> startups = startupRepository.findAll();
+            startupService.save(new StartupDto("Infotel", "Informatique", "Le Calvez Kévin", 2, "Entreprise internationnale", "15 rue du malbilay 35000 Rennes"));
+            startupService.save(new StartupDto("Kurmi", "Informatique", "Le Calvez Esteban", 1, "Entreprise internationnale", "38Ter Rue de Rennes, 35510 Cesson-Sévigné"));
+            startupService.save(new StartupDto("Square Enix", "Informatique", "Square Enix Holdings", 3, "Entreprise internationnale", "Square Enix Holdings"));
 
-          UUID uuid = UUID.randomUUID();
-          String randomUUIDString = uuid.toString();
-
-            if(startups.size() == 0){
-              startupRepository.save(new Startup(randomUUIDString, "Infotel", "Informatique", "Le Calvez Kévin", 2, "Entreprise internationnale", "15 rue du malbilay 35000 Rennes"));
-            }
+            consultantService.save(new ConsultantDto("Le Calvez", "Kévin", "Developpeur"));
+            consultantService.save(new ConsultantDto("Le Calvez", "Esteban", "Developpeur"));
+            consultantService.save(new ConsultantDto("David", "Tofigh", "Developpeur"));
         };
     }
 

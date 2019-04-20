@@ -2,7 +2,6 @@ package com.techprimers.mongodb.springbootmongodbexample.dto;
 
 public class ConsultantDto {
 
-  private String uuid;
   private String nom;
   private String prenom;
   private String description;
@@ -10,19 +9,10 @@ public class ConsultantDto {
   public ConsultantDto() {
   }
 
-  public ConsultantDto(String uuid, String nom, String prenom, String description) {
-    this.uuid = uuid;
+  public ConsultantDto(String nom, String prenom, String description) {
     this.nom = nom;
     this.prenom = prenom;
     this.description = description;
-  }
-
-  public String getUuid() {
-    return uuid;
-  }
-
-  public void setUuid(String uuid) {
-    this.uuid = uuid;
   }
 
   public String getNom() {
