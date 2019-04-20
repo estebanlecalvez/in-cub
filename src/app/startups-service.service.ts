@@ -58,14 +58,26 @@ export class StartupsServiceService implements OnInit {
           console.log("DELETE call in error", response);
         },
         () => {
-          return this.refresh();
+
         });
   }
 
 
-  update(startup) {
-    return this.http.put(`${this.api}/update`, startup).pipe(
-      catchError(this.handleError)
+  update(id, name, secteur, representant, nbrCoFondateurs, description, adresse) {
+    console.log(id, name, secteur, representant, nbrCoFondateurs, description, adresse);
+    this.http.post(`${this.api}/update`, 
+    {
+      uuid: id,
+      name: name,
+      secteur: secteur,
+      representant: representant,
+      nbrCoFondateurs: nbrCoFondateurs,
+      description: description,
+      adresse: adresse
+     }).subscribe(
+      (result) => console.log("result", result),
+      (response) => console.log("DELETE call in error", response),
+      () => console.log("startup ajoutée")
     );
   }
 

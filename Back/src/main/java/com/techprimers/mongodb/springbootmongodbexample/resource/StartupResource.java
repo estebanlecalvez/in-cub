@@ -69,7 +69,7 @@ public class StartupResource {
       "adresse": "15 rue du malbilay 35000 Rennes"
     }
    */
-  @PutMapping("/update")
+  @PostMapping("/update")
   public ResponseEntity<Startup> updateStartup(@RequestBody Startup startupToUpdate){
     Startup startupFind = startupService.findByUuid(startupToUpdate.getUuid());
     StartupDto startupDto = new StartupDto();
