@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Service
-import { StartupsServiceService } from '../startups-service.service'
+import { StartupsServiceService } from '../startups-service.service';
 import { Observable } from 'rxjs';
 import { Startup } from '../objects';
 
@@ -33,10 +33,9 @@ export class StartupListComponent implements OnInit {
     this.startups = this.startupService.list();
   }
 
-  ngOnChanges(){
-    this.startups = this.startupService.list();
-    console.log("change on page");
-  }
+  // ngOnChanges() {
+  //   this.startups = this.startupService.list();
+  // }
 
   delete(startupToDelete) {
     this.startupService.deleteStartup(startupToDelete);
