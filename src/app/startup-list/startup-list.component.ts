@@ -40,8 +40,12 @@ export class StartupListComponent implements OnInit {
 
   async delete(startupId) {
     console.log("Delete in startup-list : ", startupId);
-    this.startupService.deleteStartup(startupId);
-    window.location.reload();
+    this.startups = this.startupService.deleteStartup(startupId);
+  }
+
+  refresh() {
+    this.startups = this.startupService.refresh();
+    console.log(this.startups);
   }
 
   update(startupToUpdate) {

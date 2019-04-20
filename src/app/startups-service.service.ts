@@ -32,11 +32,19 @@ export class StartupsServiceService implements OnInit {
     return this.apiStartups;
   }
 
-  add(startup) {
-    console.log('click on add');
-    console.log(startup);
-    return this.http.post(`${this.api}/add`, { startup }).pipe(
-      catchError(this.handleError)
+  add(name, secteur, representant, nbrCoFondateurs, description, adresse) {
+    console.log(name)
+    return this.http.post(`${this.api}/add`, 
+    {
+      name: name,
+      secteur: secteur,
+      representant: representant,
+      nbrCoFondateurs: nbrCoFondateurs,
+      description: description,
+      adresse: adresse
+     }).subscribe(
+      (result) => console.log("result", result),
+      () => console.log("startup ajoutée")
     );
   }
 
@@ -44,13 +52,13 @@ export class StartupsServiceService implements OnInit {
     this.http.delete("http://localhost:8095/startup/delete/" + id)
       .subscribe(
         (val) => {
-          console.log("DELETE call successful value returned in body", val);
+          console.log("DELETE call successful value returned in body",val);
         },
         response => {
           console.log("DELETE call in error", response);
         },
         () => {
-
+          return this.refresh();
         });
   }
 

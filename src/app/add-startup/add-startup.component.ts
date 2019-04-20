@@ -19,7 +19,7 @@ export class AddStartupComponent implements OnInit {
   adresseCtrl: FormControl;
 
   startupForm: FormGroup;
-  
+
   ngOnInit() {
   }
 
@@ -42,6 +42,9 @@ export class AddStartupComponent implements OnInit {
   }
 
   register() {
-    this.startupService.add(this.startupForm.value)
+    this.startupService.add(this.nameCtrl.value, this.secteurCtrl.value,
+      this.representantCtrl.value, this.nbrCoFondateursCtrl.value, this.descriptionCtrl.value,
+      this.adresseCtrl.value);
+    window.location.reload();
   }
 }
