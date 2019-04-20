@@ -9,7 +9,7 @@
       <th scope="col">Modification</th>
       <th scope="col">Delete</th>
     </tr>
-    <tr *ngFor="let consultant of consultants; ">
+    <tr *ngFor="let consultant of consultants | async">
       <td>{{consultant.nom}}</td>
       <td>{{consultant.prenom}}</td>
       <td>{{consultant.description}}</td>

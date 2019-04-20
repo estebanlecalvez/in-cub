@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,20 +25,49 @@ export class ConsultantsService {
     },
   ];
 
-  constructor() { }
+  api = "http://localhost:8095/consultant";
 
-  add(consultant) {
-    this.consultants.push(consultant);
-    console.log('Successfully added consultant : ' + consultant);
+  apiConsultants = [];
+  constructor(private http: HttpClient) { }
+  
+  ngOnInit() {
+    this.list();
   }
 
-  delete(consultant) {
-    this.consultants.forEach((consultantInList, index) => {
-      if (consultantInList === consultant) {
-        this.consultants.splice(index, 1);
+  async list() {
+    this.apiConsultants = [];
+    await this.http.get<any>(`${this.api}/all`).subscribe(
+      result => {
+        result.map(item => this.apiConsultants.push(item));
       }
-    });
-    console.log('Successfully deleted consultant : ' + consultant.nom);
+    );
+    return this.apiConsultants;
+  }
+
+
+  add(nom, prenom, description) {
+    return this.http.post(`${this.api}/add`,
+      {
+        nom: nom,
+        prenom: prenom,
+        description: description
+      }).subscribe(
+        (result) => console.log("result", result),
+        () => console.log("consultant ajouté")
+      );
+  }
+
+  delete(id) {
+    this.http.delete("http://localhost:8095/startup/delete/" + id)
+      .subscribe(
+        (val) => {
+          console.log("DELETE call successful value returned in body", val);
+        },
+        response => {
+          console.log("DELETE call in error", response);
+        },
+        () => {
+        });
   }
 
   findOne(id) {
@@ -52,15 +81,20 @@ export class ConsultantsService {
     return consultant;
   }
 
-  update(consultantToUpdate) {
-    this.consultants.forEach((item, index) => {
-      if (item === consultantToUpdate) {
-        console.log('update : ', consultantToUpdate);
-      }
-    });
+  update(id, nom, prenom, description) {
+    console.log(id, nom, prenom, description);
+    this.http.post(`${this.api}/update`,
+      {
+        uuid: id,
+        nom: nom,
+        prenom: prenom,
+        description: description,
+      }).subscribe(
+        (result) => console.log("result", result),
+        (response) => console.log("DELETE call ", response),
+        () => console.log("startup ajoutée")
+      );
   }
 
-  list() {
-    return this.consultants;
-  }
+
 }

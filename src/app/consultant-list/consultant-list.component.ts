@@ -12,26 +12,18 @@ export class ConsultantListComponent implements OnInit {
   @Input() idConsultant:number;
   showModifForm;
   showAddForm =false;
-  consultants = [];
+  consultants;
 
   constructor(private consultantService: ConsultantsService) { }
 
   ngOnInit() {
     this.consultants = this.consultantService.list();
-    this.consultants = this.consultantService.list();
-    this.consultants = this.consultantService.list();
-    this.consultants = this.consultantService.list();
-    this.consultants = this.consultantService.list();
-    this.consultants = this.consultantService.list();
-    this.consultants = this.consultantService.list();
   }
 
-  delete(consultantToDelete){
-    this.consultantService.delete(consultantToDelete);
-  }
-
-  update(consultantToUpdate){
-    this.consultantService.update(consultantToUpdate);
+  async delete(consultantId) {
+    console.log("Delete in startup-list : ", consultantId);
+    this.consultantService.delete(consultantId);
+    window.location.reload();
   }
 
   showModificationForm(idConsultant){

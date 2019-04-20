@@ -11,8 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class StartupsServiceService implements OnInit {
 
-  consultants = new ConsultantsService();
-  api = "http://localhost:8095/startup";
+  api = 'http://localhost:8095/startup';
   private apiStartups = [];
 
   constructor(private http: HttpClient) {

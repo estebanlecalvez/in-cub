@@ -17,7 +17,8 @@ public class SpringBootMongodbExampleApplication {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-          .allowedMethods("*").allowedOrigins("*");
+          .allowedMethods("*")
+          .allowedOrigins("*");
       }
     };
   }

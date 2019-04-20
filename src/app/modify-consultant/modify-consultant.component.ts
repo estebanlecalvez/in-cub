@@ -36,4 +36,11 @@ export class ModifyConsultantComponent implements OnInit {
     console.log('Startup id' + this.idConsultant);
     this.consultantFind = this.consultantService.findOne(id);
   }
+
+  update() {
+    const consultant = [];
+    consultant.push(this.idConsultant + this.consultantForm.value);
+    this.consultantService.update(this.idConsultant, this.nomCtrl.value, this.prenomCtrl.value, this.descriptionCtrl.value);
+    window.location.reload();
+  }
 }

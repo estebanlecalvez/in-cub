@@ -17,7 +17,7 @@
    </div>
 
    <div class="row">
-      <div class="col" *ngFor="let consultant of consultants">
+      <div class="col" *ngFor="let consultant of consultants | async">
          <div class="card text-white bg-dark mb-3 shadow" style="max-width: 18rem;">
             <div class="card-header">
                <h5>{{consultant.prenom}} {{consultant.nom}}</h5>

@@ -34,7 +34,8 @@ export class AddConsultantComponent implements OnInit {
   }
 
   add() {
-
+    this.consultantService.add(this.nomCtrl,this.prenomCtrl,this.descriptionCtrl);
+    window.location.reload();
   }
 
 }
