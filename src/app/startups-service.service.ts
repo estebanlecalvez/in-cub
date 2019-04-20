@@ -33,6 +33,7 @@ export class StartupsServiceService implements OnInit {
   refresh() {
     this.apiStartups = [];
     this.list();
+    return this.getStartups();
   }
 
   getStartups(){
@@ -57,7 +58,7 @@ export class StartupsServiceService implements OnInit {
           console.log("DELETE call in error", response);
         },
         () => {
-          console.log("The DELETE observable is now completed.");
+          return this.refresh();
         });
   }
 

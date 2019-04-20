@@ -20,6 +20,18 @@ export class StartupListComponent implements OnInit {
   constructor(private startupService: StartupsServiceService) {
   }
 
+  ngOnInit() {
+    this.startups = this.startupService.getStartups();
+  }
+
+  ngAfterContentInit(){
+    console.log("la page change");
+  }
+
+  // ngOnChanges() {
+  //   this.startups = this.startupService.list();
+  // }
+
   showModificationForm(idStartup) {
     this.showModifForm = !this.showModifForm;
     this.id = idStartup;
@@ -29,23 +41,14 @@ export class StartupListComponent implements OnInit {
     this.showAddForm = !this.showAddForm;
   }
 
-  ngOnInit() {
-    this.startups = this.startupService.getStartups();
-  }
-
-  // ngOnChanges() {
-  //   this.startups = this.startupService.list();
-  // }
-
   delete(startupId) {
     console.log("Delete in startup-list : ", startupId);
-    this.startupService.deleteStartup(startupId);
-    this.refresh();
+    this.startups = this.startupService.deleteStartup(startupId);
   }
 
-  refresh(){
-    this.startupService.refresh();
-    this.startupService.getStartups();
+  refresh() {
+    this.startups = this.startupService.refresh();
+    console.log(this.startups);
   }
 
   update(startupToUpdate) {
