@@ -38,6 +38,7 @@ export class StartupListComponent implements OnInit {
   // }
 
   delete(startupId) {
+    console.log("Delete in startup-list : ", startupId);
     this.startupService.deleteStartup(startupId);
   }
 

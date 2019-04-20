@@ -14,13 +14,12 @@ export class StartupsServiceService {
   consultants = new ConsultantsService();
   api = "http://localhost:8095/startup";
   private apiStartups = [];
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
   }
-
-
 
   list() {
     return this.http.get(`${this.api}/all`).pipe(
@@ -41,8 +40,17 @@ export class StartupsServiceService {
   }
 
   deleteStartup(id) {
-    console.log('deleting startup with id : ' + id);
-    return this.http.get(`${this.api}/delete/${id}`);
+    this.http.delete("http://localhost:8095/startup/delete/" + id)
+      .subscribe(
+        (val) => {
+          console.log("DELETE call successful value returned in body",val);
+        },
+        response => {
+          console.log("DELETE call in error", response);
+        },
+        () => {
+          console.log("The DELETE observable is now completed.");
+        });
   }
 
 
@@ -57,7 +65,6 @@ export class StartupsServiceService {
       catchError(this.handleError)
     );
   }
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
