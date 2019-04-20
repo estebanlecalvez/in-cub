@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card text-white bg-white mb-3 box shadow" >
        <div class="card-header" style="    color:#25007a;">
-          <h5>Update consultant {{consultantFind.nom}}</h5>
+          <h5>Update consultant </h5>
        </div>
        <form [formGroup]="consultantForm">
           <div class="card-body">
@@ -10,7 +10,7 @@
                 <span class="input-group-text" id="basic-addon1">
                    <img src="../../assets/account.svg" alt="Nom">
                 </span>
-                <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="{{consultantFind.nom}}">
+                <input type="text" autocomplete="off" id="nom" formControlName="nom" placeholder="Nom">
              </div>
              <div class="errors" *ngIf="nomCtrl.dirty && nomCtrl.hasError('required')">
                 <p>Le champ est obligatoire</p>
@@ -26,7 +26,7 @@
                    <img src="../../assets/face.svg" alt="Représentant">
                 </span>
                 <input type="text" autocomplete="off" id="prenom" formControlName="prenom"
-                   placeholder="{{consultantFind.prenom}}">
+                   placeholder="Prenom">
              </div>
              <div class="errors" *ngIf="prenomCtrl.dirty && prenomCtrl.hasError('required')">
                 <p>Le champ est obligatoire</p>
@@ -40,7 +40,7 @@
                    <img src="../../assets/create.svg" alt="Description">
                 </span>
                 <textarea name="message" class="form-control" rows="3" id="description" formControlName="description"
-                   placeholder="{{consultantFind.description}}"></textarea>
+                   placeholder="Description"></textarea>
              </div>
              <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('required')">
                 <p>Le champ est obligatoire</p>

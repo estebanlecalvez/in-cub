@@ -9,9 +9,9 @@ import { ConsultantsService } from '../consultants.service'
   styleUrls: ['./consultant-list.component.css']
 })
 export class ConsultantListComponent implements OnInit {
-  @Input() idConsultant:number;
+  @Input() idConsultant: number;
   showModifForm;
-  showAddForm =false;
+  showAddForm = false;
   consultants;
 
   constructor(private consultantService: ConsultantsService) { }
@@ -21,17 +21,16 @@ export class ConsultantListComponent implements OnInit {
   }
 
   async delete(consultantId) {
-    console.log("Delete in startup-list : ", consultantId);
     this.consultantService.delete(consultantId);
     window.location.reload();
   }
 
-  showModificationForm(idConsultant){
+  showModificationForm(idConsultant) {
     this.showModifForm = !this.showModifForm;
     this.idConsultant = idConsultant;
   }
 
-  showAddingForm(){
+  showAddingForm() {
     this.showAddForm = !this.showAddForm;
   }
 
