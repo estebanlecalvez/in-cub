@@ -57,7 +57,7 @@ public class StartupResource {
     return startupService.save(newStartup);
   }
 
-  // PUT - http://localhost:8095/startup/update
+  // POST - http://localhost:8095/startup/update
   /*
     {
       "uuid": "d5d191f5-d445-4727-8d27-ab9ac17c03ae",
@@ -83,6 +83,14 @@ public class StartupResource {
       startupDto.setNbrCoFondateurs(startupToUpdate.getNbrCoFondateurs());
       startupDto.setDescription(startupToUpdate.getDescription());
       startupDto.setAdresse(startupToUpdate.getAdresse());
+
+      startupFind.setUuid(startupToUpdate.getUuid());
+      startupFind.setName(startupToUpdate.getName());
+      startupFind.setSecteur(startupToUpdate.getSecteur());
+      startupFind.setRepresentant(startupToUpdate.getRepresentant());
+      startupFind.setNbrCoFondateurs(startupToUpdate.getNbrCoFondateurs());
+      startupFind.setDescription(startupToUpdate.getDescription());
+      startupFind.setAdresse(startupToUpdate.getAdresse());
 
       startupService.delete(startupFind.getUuid());
       startupService.save(startupDto);

@@ -36,9 +36,9 @@ public class ConsultantService {
     UUID uuid = UUID.randomUUID();
     String randomUUIDString = uuid.toString();
 
-    consultant.setUuid(consultant.getUuid());
-    consultant.setNom(consultant.getNom());
-    consultant.setPrenom(consultant.getPrenom());
+    consultant.setUuid(randomUUIDString);
+    consultant.setNom(consultantDto.getNom());
+    consultant.setPrenom(consultantDto.getPrenom());
     consultant.setDescription(consultantDto.getDescription());
 
     return this.consultantRepository.save(consultant);
