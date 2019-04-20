@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ConsultantsService } from './consultants.service';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Startup } from './objects';
@@ -9,26 +9,40 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class StartupsServiceService {
+export class StartupsServiceService implements OnInit {
 
   consultants = new ConsultantsService();
   api = "http://localhost:8095/startup";
-  private apiStartups = [];
+  private apiStartups: any[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.list();
+   }
 
   ngOnInit() {
-
   }
 
   list() {
-    return this.http.get(`${this.api}/all`).pipe(
-      catchError(this.handleError)
-    );
-
+    this.apiStartups = this.http.get(`${this.api}/all`).subscribe(
+      (val) => {
+        console.log('list() in stratups service', val);
+      });
   }
 
-  getStartups() {
+  refresh() {
+    this.apiStartups = [];
+
+    this.http.get(`${this.api}/all`).pipe(
+      map(
+        (jsonArray: Object[]) => jsonArray.map(jsonItem => this.apiStartups.push(jsonItem))
+      )
+    );
+
+    console.log("apiStratups in stratups service", this.apiStartups);
+  }
+
+  getStartups(){
+    return this.apiStartups;
   }
 
   add(startup) {
@@ -65,6 +79,8 @@ export class StartupsServiceService {
       catchError(this.handleError)
     );
   }
+
+ 
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
