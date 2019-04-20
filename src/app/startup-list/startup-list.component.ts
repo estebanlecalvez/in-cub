@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 // Service
 import { StartupsServiceService } from '../startups-service.service';
@@ -37,8 +37,8 @@ export class StartupListComponent implements OnInit {
   //   this.startups = this.startupService.list();
   // }
 
-  delete(startupToDelete) {
-    this.startupService.deleteStartup(startupToDelete);
+  delete(startupId) {
+    this.startupService.deleteStartup(startupId);
   }
 
   update(startupToUpdate) {

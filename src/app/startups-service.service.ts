@@ -20,7 +20,7 @@ export class StartupsServiceService {
 
   }
 
-  
+
 
   list() {
     return this.http.get(`${this.api}/all`).pipe(
@@ -33,19 +33,16 @@ export class StartupsServiceService {
   }
 
   add(startup) {
-    console.log("click on add");
+    console.log('click on add');
     console.log(startup);
     return this.http.post(`${this.api}/add`, { startup }).pipe(
       catchError(this.handleError)
     );
   }
 
-  deleteStartup(startup: Startup | number): Observable<Startup> {
-    const id = typeof startup === 'number' ? startup : startup._id;
-    const url = `${this.api}/delete/${id}`;
-    return this.http.delete<Startup>(url).pipe(
-      catchError(this.handleError)
-    );
+  deleteStartup(id) {
+    console.log('deleting startup with id : ' + id);
+    return this.http.get(`${this.api}/delete/${id}`);
   }
 
 
