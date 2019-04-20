@@ -1,7 +1,7 @@
 <div class="container">
   <button class="btn btn-success" (click)="showAddingForm()">Add Startup</button>
   <app-add-startup *ngIf="showAddForm"></app-add-startup>
-  <table class="table" id="listStartup">
+  <table class="table table-striped table-primary" id="listStartup">
     <tr>
       <th scope="col">Nom</th>
       <th scope="col">Secteur d'activité</th>
@@ -23,7 +23,7 @@
         <td>{{startup.description}}</td>
         <td>{{startup.adresse | AdressPipe}}</td>
         <td>
-          <button class="btn btn-primary" (click)="showModificationForm(startup.id)">Modification</button>
+          <button class="btn btn-primary" (click)="showModificationForm(startup.uuid)">Modification</button>
         </td>
         <td>
           <button class="btn btn-danger" (click)="delete(startup.uuid)">Delete</button>
