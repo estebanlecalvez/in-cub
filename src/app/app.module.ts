@@ -26,6 +26,7 @@ import { ConsultantListComponent } from './consultant-list/consultant-list.compo
 import { AddConsultantComponent } from './add-consultant/add-consultant.component';
 import { ModifyConsultantComponent } from './modify-consultant/modify-consultant.component';
 import { CoFoundersPipe, AdressPipe } from './customPipes';
+import { UnknownComponent } from './unknown/unknown.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CoFoundersPipe, AdressPipe } from './customPipes';
     ConsultantListComponent,
     AddConsultantComponent,
     ModifyConsultantComponent,
+    UnknownComponent,
   ],
   imports: [
     HttpClientModule,
@@ -65,26 +67,34 @@ import { CoFoundersPipe, AdressPipe } from './customPipes';
         component: StartupListComponent,
       },
       {
-        path:'consultants',
-        component:ConsultantListComponent
+        path: 'consultants',
+        component: ConsultantListComponent
       },
       {
         path: 'consultant/add',
-        component:AddConsultantComponent,
+        component: AddConsultantComponent,
       },
       {
         path: 'consultant/:id',
-        component:ModifyConsultantComponent,
+        component: ModifyConsultantComponent,
       },
       {
         path: 'startup/add',
-        component:AddStartupComponent,
+        component: AddStartupComponent,
       },
       {
         path: 'startup/:id',
         component: ModificationPageComponent,
       },
-      
+      {
+        path: '404',
+        component: UnknownComponent
+      },
+      {
+        path: '**',
+        redirectTo: '/404'
+      }
+
     ]),
     FormsModule,
     ReactiveFormsModule,
