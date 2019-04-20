@@ -5,7 +5,6 @@
        </div>
        <form [formGroup]="consultantForm">
           <div class="card-body">
- 
              <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">
                    <img src="../../assets/account.svg" alt="Nom">
@@ -48,7 +47,7 @@
              <div class="errors" *ngIf="descriptionCtrl.dirty && descriptionCtrl.hasError('maxlength')">
                 <p>Le champ ne peut pas contenir plus de 250 caractères</p>
              </div>
-             <button class="btn btn-success" [disabled]="startupForm.invalid" (click)="update()">Update</button>
+             <button class="btn btn-success" [disabled]="consultantForm.invalid" (click)="update()">Update</button>
           </div>
  
        </form>

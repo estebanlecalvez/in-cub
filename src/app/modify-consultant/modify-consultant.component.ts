@@ -31,14 +31,12 @@ export class ModifyConsultantComponent implements OnInit {
   ngOnInit() {
   }
 
-  // Get one stratup by id
   find(id) {
-    console.log('Startup id' + this.idConsultant);
+    console.log('Consultant id' + this.idConsultant);
     this.consultantFind = this.consultantService.findOne(id);
   }
 
   update() {
-    const consultant = [];
     this.consultantService.update(this.idConsultant, this.nomCtrl.value, this.prenomCtrl.value, this.descriptionCtrl.value);
     window.location.reload();
   }

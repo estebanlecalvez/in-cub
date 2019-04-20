@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class ConsultantsService {
   api = "http://localhost:8095/consultant";
 
   apiConsultants = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.list();
@@ -18,7 +19,9 @@ export class ConsultantsService {
 
   async list() {
     this.apiConsultants = [];
-    await this.http.get<any>(`${this.api}/all`).subscribe(
+    await this.http.get<any>(`${this.api}/all`).pipe(
+      catchError(this.handleError)
+    ).subscribe(
       result => {
         result.map(item => this.apiConsultants.push(item));
       }
@@ -33,14 +36,18 @@ export class ConsultantsService {
         nom: nom,
         prenom: prenom,
         description: description
-      }).subscribe(
+      }).pipe(
+        catchError(this.handleError)
+      ).subscribe(
         (result) => console.log("result", result),
         () => console.log("consultant ajouté")
       );
   }
 
   delete(id) {
-    this.http.delete(`${this.api}/delete/${id}`)
+    this.http.delete(`${this.api}/delete/${id}`).pipe(
+      catchError(this.handleError)
+    )
       .subscribe(
         (val) => {
           console.log("DELETE call successful value returned in body", val);
@@ -66,7 +73,9 @@ export class ConsultantsService {
         nom: nom,
         prenom: prenom,
         description: description,
-      }).subscribe(
+      }).pipe(
+        catchError(this.handleError)
+      ).subscribe(
         (result) => console.log("result", result),
         (response) => console.log("DELETE call ", response),
         () => console.log("startup ajoutée")
@@ -75,17 +84,16 @@ export class ConsultantsService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
+      if (error.status === 404) {
+        this.router.navigateByUrl('/404');
+      }
       console.error('An error occurred:', error.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 }

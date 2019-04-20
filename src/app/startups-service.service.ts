@@ -4,6 +4,7 @@ import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/htt
 import { Startup } from './objects';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class StartupsServiceService implements OnInit {
   api = 'http://localhost:8095/startup';
   private apiStartups = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   ngOnInit() {
@@ -86,6 +87,9 @@ export class StartupsServiceService implements OnInit {
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
+      if (error.status === 404) {
+        this.router.navigateByUrl('/404');
+      }
       console.error('An error occurred:', error.error.message);
     } else {
       console.error(
@@ -94,5 +98,5 @@ export class StartupsServiceService implements OnInit {
     }
     return throwError(
       'Something bad happened; please try again later.');
-  };
+  }
 }

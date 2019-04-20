@@ -9,10 +9,10 @@ import { ConsultantsService } from '../consultants.service'
   styleUrls: ['./consultant-list.component.css']
 })
 export class ConsultantListComponent implements OnInit {
-  @Input() idConsultant: number;
   showModifForm;
   showAddForm = false;
   consultants;
+  id;
 
   constructor(private consultantService: ConsultantsService) { }
 
@@ -27,7 +27,7 @@ export class ConsultantListComponent implements OnInit {
 
   showModificationForm(idConsultant) {
     this.showModifForm = !this.showModifForm;
-    this.idConsultant = idConsultant;
+    this.id = idConsultant;
   }
 
   showAddingForm() {
