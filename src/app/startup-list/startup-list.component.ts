@@ -24,11 +24,6 @@ export class StartupListComponent implements OnInit {
     this.startups = this.startupService.list();
   }
 
-
-  ngOnChanges() {
-    console.log("onchanges");
-  }
-
   showModificationForm(idStartup) {
     this.showModifForm = !this.showModifForm;
     this.id = idStartup;
@@ -40,12 +35,8 @@ export class StartupListComponent implements OnInit {
 
   async delete(startupId) {
     console.log("Delete in startup-list : ", startupId);
-    this.startups = this.startupService.deleteStartup(startupId);
-  }
-
-  refresh() {
-    this.startups = this.startupService.refresh();
-    console.log(this.startups);
+    this.startupService.deleteStartup(startupId);
+    window.location.reload();
   }
 
   update(startupToUpdate) {

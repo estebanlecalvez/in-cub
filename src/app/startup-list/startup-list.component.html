@@ -13,8 +13,6 @@
       <th scope="col">Delete</th>
     </tr>
 
-    <!-- <div *ngIf="isLoaded; else wait"> -->
-
       <tr *ngFor="let startup of startups | async">
         <td>{{startup.name}}</td>
         <td>{{startup.secteur}}</td>
@@ -29,12 +27,6 @@
           <button class="btn btn-danger" (click)="delete(startup.uuid)">Delete</button>
         </td>
       </tr>
-
-    <!-- </div>
-
-    <<ng-template #wait>
-      Loading ...
-    </ng-template> -->
     
   </table>
   <app-modification-page *ngIf="showModifForm" idStartup="{{id}}"></app-modification-page>

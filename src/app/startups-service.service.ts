@@ -33,7 +33,6 @@ export class StartupsServiceService implements OnInit {
   }
 
   add(name, secteur, representant, nbrCoFondateurs, description, adresse) {
-    console.log(name)
     return this.http.post(`${this.api}/add`, 
     {
       name: name,
@@ -58,7 +57,6 @@ export class StartupsServiceService implements OnInit {
           console.log("DELETE call in error", response);
         },
         () => {
-
         });
   }
 
